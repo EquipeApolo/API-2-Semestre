@@ -14,7 +14,7 @@ import java.util.List;
 public class MensagemDAO {
 
     public static void createTable(){
-        String sql = "CREATE TABLE IF NOT EXISTS mensagem(id int AUTO_INCREMENT, cliente varchar(30) not null, meio varchar(20) not null, conteudo text not null, data_horario bigint not null, PRIMARY KEY (id)) DEFAULT CHARSET=utf8;";
+        String sql = "CREATE TABLE IF NOT EXISTS mensagem(id int AUTO_INCREMENT, quem_enviou varchar(30), cliente varchar(30) not null, meio varchar(20) not null, conteudo text not null, data_horario bigint not null, PRIMARY KEY (id)) DEFAULT CHARSET=utf8;";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.execute();
@@ -25,13 +25,14 @@ public class MensagemDAO {
 
 
     public static void addMensagemToDatabase(Mensagem mensagem){
-        String sql = "INSERT INTO mensagem(meio,cliente,conteudo,data_horario) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO mensagem(meio,quem_enviou,cliente,conteudo,data_horario) VALUES (?,?,?,?,?);";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.setString(1, mensagem.getMeio());
-            statement.setString(2, mensagem.getNomeCliente());
-            statement.setString(3, mensagem.getConteudo());
-            statement.setLong(4, mensagem.getData());
+            statement.setString(2, mensagem.getQuemEnviou());
+            statement.setString(3, mensagem.getNomeCliente());
+            statement.setString(4, mensagem.getConteudo());
+            statement.setLong(5, mensagem.getData());
 
             statement.executeUpdate();
         }catch(SQLException e){
@@ -47,7 +48,7 @@ public class MensagemDAO {
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                Mensagem mensagem = new Mensagem(resultSet.getString("cliente"), resultSet.getString("meio"), resultSet.getString("conteudo"), resultSet.getLong("data_horario"));
+                Mensagem mensagem = new Mensagem(resultSet.getString("cliente"), resultSet.getString("quem_enviou"), resultSet.getString("meio"), resultSet.getString("conteudo"), resultSet.getLong("data_horario"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){

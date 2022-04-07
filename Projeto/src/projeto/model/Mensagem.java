@@ -5,15 +5,25 @@ package projeto.model;
 public class Mensagem {
 
     private String nomeCliente;
+    private String quemEnviou;
     private String meio;
     private String conteudo;
     private long data;
 
-    public Mensagem(String cliente, String meioContato, String mensagem, long horario){
+    public Mensagem(String cliente, String quemEnviou, String meioContato, String mensagem, long horario){
         this.nomeCliente = cliente;
+        this.quemEnviou = quemEnviou;
         this.meio = meioContato;
         this.conteudo = mensagem;
         this.data = horario;
+    }
+
+    public String getQuemEnviou() {
+        return quemEnviou;
+    }
+
+    public void setQuemEnviou(String quemEnviou) {
+        this.quemEnviou = quemEnviou;
     }
 
     public String getNomeCliente(){
