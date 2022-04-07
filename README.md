@@ -21,3 +21,7 @@
  
 
  → [Voltar ao topo](#topo)
+ 
+ ## 📌 Backlog Priorizado
+    
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Product%20backlog.png"></p>
