@@ -4,6 +4,7 @@ package projeto.model;
 
 public class Mensagem {
 
+    private int id;
     private String nomeCliente;
     private String quemEnviou;
     private String meio;
@@ -16,6 +17,14 @@ public class Mensagem {
         this.meio = meioContato;
         this.conteudo = mensagem;
         this.data = horario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getQuemEnviou() {
