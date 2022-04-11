@@ -18,6 +18,14 @@ public class Manager {
         MensagemDAO.addMensagemToDatabase(mensagem);
     }
 
+    public void deletarMensagem(int id_mensagem){
+        MensagemDAO.deleteMensagemFromDatabase(id_mensagem);
+    }
+
+    public void deletarMensagem(Mensagem mensagem){
+        MensagemDAO.deleteMensagemFromDatabase(mensagem.getId());
+    }
+
     public List<Mensagem> pegarTodasMensagens(){
         return MensagemDAO.getTodasMensagens();
     }

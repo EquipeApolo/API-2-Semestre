@@ -41,6 +41,19 @@ public class MensagemDAO {
         }
     }
 
+
+	public static void deleteMensagemFromDatabase(int id_mensagem){
+        String sql = "DELETE FROM mensagem WHERE id = ?;";
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setInt(1, id_mensagem);
+
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static List<Mensagem> getTodasMensagens(){
         List<Mensagem> listaMensagens = new ArrayList<>();
         String sql = "SELECT * FROM mensagem;";
@@ -109,6 +122,7 @@ public class MensagemDAO {
 
             while(resultSet.next()){
                 Mensagem mensagem = new Mensagem(resultSet.getString("cliente"), resultSet.getString("quem_enviou"), resultSet.getString("meio"), resultSet.getString("conteudo"), resultSet.getLong("data_horario"));
+                mensagem.setId(resultSet.getInt("id"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){
