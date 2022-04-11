@@ -19,7 +19,7 @@ public class Manager {
     }
 
     public List<Mensagem> pegarTodasMensagens(){
-        return MensagemDAO.getAllMensagens();
+        return MensagemDAO.getTodasMensagens();
     }
 
     public String transformarData(long data){

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import projeto.connection.ConnectionFactory;
 
 public class MensagemDAO {
 
@@ -40,11 +41,70 @@ public class MensagemDAO {
         }
     }
 
-    public static List<Mensagem> getAllMensagens(){
-        List<Mensagem> mensagens = new ArrayList<>();
+    public static List<Mensagem> getTodasMensagens(){
+        List<Mensagem> listaMensagens = new ArrayList<>();
         String sql = "SELECT * FROM mensagem;";
+       
         try{
-            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ConnectionFactory factory = new ConnectionFactory();
+            PreparedStatement statement = factory.getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Mensagem mensagem = new Mensagem(
+                        resultSet.getString("cliente"), 
+                        resultSet.getString("quem_enviou"),
+                        resultSet.getString("meio"), 
+                        resultSet.getString("conteudo"), 
+                        resultSet.getLong("data_horario")
+                );
+                
+                listaMensagens.add(mensagem);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return listaMensagens;
+    }
+    
+    public static List<Mensagem> getMensagensPorQuemEnviou(String nomeQuemEnviou){
+        List<Mensagem> mensagens = new ArrayList<>();
+        
+        if(nomeQuemEnviou.isBlank()){
+            nomeQuemEnviou = "%";
+        }
+        
+        String sql = "SELECT * FROM mensagem where quem_enviou like '%"+nomeQuemEnviou+"%'";
+       
+        try{
+            ConnectionFactory factory = new ConnectionFactory();
+            PreparedStatement statement = factory.getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Mensagem mensagem = new Mensagem(resultSet.getString("cliente"), resultSet.getString("quem_enviou"), resultSet.getString("meio"), resultSet.getString("conteudo"), resultSet.getLong("data_horario"));
+                mensagens.add(mensagem);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return mensagens;
+    }
+    
+    public static List<Mensagem> getMensagensPorCliente(String nomeDoCliente){
+        List<Mensagem> mensagens = new ArrayList<>();
+        
+        if(nomeDoCliente.isBlank()){
+            nomeDoCliente = "%";
+        }
+        
+        String sql = "SELECT * FROM mensagem where cliente like '%"+nomeDoCliente+"%'";
+       
+        try{
+            ConnectionFactory factory = new ConnectionFactory();
+            PreparedStatement statement = factory.getConnection().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
