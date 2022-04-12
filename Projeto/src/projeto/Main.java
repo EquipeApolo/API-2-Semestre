@@ -1,9 +1,9 @@
 
 package projeto;
 
+import projeto.connection.dao.Manager;
 import projeto.connection.ConnectionFactory;
 import projeto.connection.dao.MensagemDAO;
-import projeto.model.Mensagem;
 
 import java.sql.SQLException;
 import projeto.GUI.MenuPrincipal;

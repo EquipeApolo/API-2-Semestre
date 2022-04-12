@@ -6,8 +6,10 @@ package projeto.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import projeto.Main;
 import projeto.connection.dao.MensagemDAO;
 import projeto.model.Mensagem;
 
@@ -25,7 +27,15 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
          jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
          
-          readTable();
+         jTMensagens.getColumnModel().getColumn(0).setPreferredWidth(27);
+jTMensagens.getColumnModel().getColumn(1).setPreferredWidth(50);
+jTMensagens.getColumnModel().getColumn(2).setPreferredWidth(20);
+jTMensagens.getColumnModel().getColumn(3).setPreferredWidth(200);
+jTMensagens.getColumnModel().getColumn(4).setPreferredWidth(20);
+jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+         
+          lerTabela();
+          jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
     }
 
     /**
@@ -100,7 +110,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomeQuemEnviouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
@@ -119,7 +129,13 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                 "Nome do Cliente", "Responsável pelo Registro", "Meio", "Conteúdo", "Data"
             }
         ));
+        jTMensagens.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jTMensagens.setName(""); // NOI18N
+        jTMensagens.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTMensagensMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTMensagens);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -131,8 +147,8 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,7 +195,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                 mensagem.getQuemEnviou(),
                 mensagem.getMeio(),
                 mensagem.getConteudo(),
-                mensagem.getData()
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
                 });
         }
         
@@ -192,6 +208,29 @@ public class ConsultarMensagem extends javax.swing.JFrame {
     private void nomeQuemEnviouTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeQuemEnviouTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeQuemEnviouTextFieldActionPerformed
+
+    private void jTMensagensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTMensagensMouseClicked
+
+        int linhaSelecionada =  jTMensagens.getSelectedRow();
+        
+         String cliente = (String)jTMensagens.getValueAt(linhaSelecionada, 0);
+         String quemEnviou = (String)jTMensagens.getValueAt(linhaSelecionada, 1);
+         String meioContato = (String)jTMensagens.getValueAt(linhaSelecionada, 2);
+         String mensagem = (String)jTMensagens.getValueAt(linhaSelecionada, 3);
+         long horario = (long)Main.getManager().destransformarData((String)jTMensagens.getValueAt(linhaSelecionada, 4));
+                 
+        Mensagem mensagemSelecionada = new Mensagem(cliente, quemEnviou, meioContato, mensagem, horario);
+        
+        
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                
+                ExibirLinhasTabela exibitExibirLinhasTabela = new ExibirLinhasTabela(mensagemSelecionada);
+                exibitExibirLinhasTabela.setVisible(true);
+            }
+        });
+
+    }//GEN-LAST:event_jTMensagensMouseClicked
 
     /**
      * @param args the command line arguments
@@ -228,7 +267,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         });
     }
     
-    public void readTable(){
+    public void lerTabela(){
         DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
         
          tabelaMensagens.setNumRows(0);
@@ -243,7 +282,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                 mensagem.getQuemEnviou(),
                 mensagem.getMeio(),
                 mensagem.getConteudo(),
-                mensagem.getData()
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
                 });
         }
         
