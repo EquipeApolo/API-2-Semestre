@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import projeto.Main;
 import projeto.connection.dao.MensagemDAO;
 import projeto.model.Mensagem;
 
@@ -26,6 +27,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
          
           readTable();
+
     }
 
     /**
@@ -100,7 +102,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomeQuemEnviouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
@@ -179,7 +181,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                 mensagem.getQuemEnviou(),
                 mensagem.getMeio(),
                 mensagem.getConteudo(),
-                mensagem.getData()
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
                 });
         }
         
@@ -224,6 +226,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConsultarMensagem().setVisible(true);
+
             }
         });
     }
@@ -243,9 +246,12 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                 mensagem.getQuemEnviou(),
                 mensagem.getMeio(),
                 mensagem.getConteudo(),
-                mensagem.getData()
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
                 });
         }
+
+
+        jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
         
     }
 
