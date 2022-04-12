@@ -27,6 +27,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
          jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
          
+<<<<<<< HEAD
          jTMensagens.getColumnModel().getColumn(0).setPreferredWidth(27);
 jTMensagens.getColumnModel().getColumn(1).setPreferredWidth(50);
 jTMensagens.getColumnModel().getColumn(2).setPreferredWidth(20);
@@ -36,6 +37,10 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
          
           lerTabela();
           jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+=======
+          readTable();
+
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
     }
 
     /**
@@ -263,6 +268,7 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConsultarMensagem().setVisible(true);
+
             }
         });
     }
@@ -285,6 +291,9 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
                 Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
                 });
         }
+
+
+        jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
         
     }
 

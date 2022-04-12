@@ -34,6 +34,8 @@ public class CadastrarMensagem extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -45,10 +47,19 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+<<<<<<< HEAD
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+=======
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
 
         jLabel6.setText("jLabel6");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,10 +112,16 @@ public class CadastrarMensagem extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+=======
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,9 +152,17 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel2))
                                     .addComponent(jTextField4)))
+<<<<<<< HEAD
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
+=======
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel7)
+                        .addGap(0, 185, Short.MAX_VALUE)))
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -145,9 +170,15 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(8, 8, 8))
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -174,8 +205,13 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
+=======
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -204,6 +240,7 @@ public class CadastrarMensagem extends javax.swing.JFrame {
             jLabel3.setForeground(Color.red);
         }
         
+<<<<<<< HEAD
         if ((jTextArea1.getText().isEmpty())) {
             jLabel4.setForeground(Color.red);
          
@@ -212,6 +249,16 @@ public class CadastrarMensagem extends javax.swing.JFrame {
             
                     
                Main.getManager().cadastrarMensagem(new Mensagem(jTextField1.getText(), jTextField4.getText(), jTextField2.getText(), jTextArea1.getText(), System.currentTimeMillis() ));
+=======
+        if ((jTextArea2.getText().isEmpty())) {
+            jLabel4.setForeground(Color.red);
+         
+        }
+        if  (!((jTextField1.getText().isEmpty()) || (jTextField4.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || (jTextArea2.getText().isEmpty()))){
+            
+                    
+               Main.getManager().cadastrarMensagem(new Mensagem(jTextField1.getText(), jTextField4.getText(), jTextField2.getText(), jTextArea2.getText(), System.currentTimeMillis() ));
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
                JOptionPane.showMessageDialog(null, "Mensagem cadastrada com sucesso!");
                dispose(); 
             
@@ -286,7 +333,13 @@ public class CadastrarMensagem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< HEAD
     private javax.swing.JTextArea jTextArea1;
+=======
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+>>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;

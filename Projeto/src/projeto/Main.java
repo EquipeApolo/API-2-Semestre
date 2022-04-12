@@ -6,6 +6,7 @@ import projeto.connection.ConnectionFactory;
 import projeto.connection.dao.MensagemDAO;
 
 import java.sql.SQLException;
+
 import projeto.GUI.MenuPrincipal;
 
 public class Main {
@@ -30,6 +31,7 @@ public class Main {
         MensagemDAO.createTable();
         
         MenuPrincipal menuPrincipal = new MenuPrincipal();
+
         menuPrincipal.setVisible(true);
 
 //        //teste
