@@ -11,7 +11,7 @@ public class ConnectionFactory {
     private Connection connection;
 
     public ConnectionFactory() throws SQLException {
-        this.connection = DriverManager.getConnection("jdbc:mysql://localhost/projetoAPI", "root", "Africas2lucas");
+        this.connection = DriverManager.getConnection("jdbc:mysql://localhost/projetoAPI", "root", "fatecsjc");
     }
 
     public Connection getConnection(){

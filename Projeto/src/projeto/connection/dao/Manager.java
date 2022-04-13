@@ -38,7 +38,7 @@ public class Manager {
         return simpleDateFormat.format(data);
     }
     
-    public long destransformarData(String data){
+        public long destransformarData(String data){
         data = data.replace("às", "-");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         try {
