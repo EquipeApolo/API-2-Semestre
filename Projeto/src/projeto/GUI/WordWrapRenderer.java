@@ -11,30 +11,6 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  *
-<<<<<<< HEAD
- * @author jenny
- */
-public class WordWrapRenderer extends JTextArea implements TableCellRenderer{
-
-    WordWrapRenderer() {
-            setLineWrap(true);
-            setWrapStyleWord(true);
-    }
-    
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int collumn){
-        setText((value == null) ? "" : value.toString());
-        setSize(table.getColumnModel().getColumn(collumn).getWidth(), table.getRowHeight(row));
-        
-        int preferredHeight = getPreferredSize().height;
-        if(table.getRowHeight(row) != preferredHeight){
-                table.setRowHeight(row, preferredHeight);
-        }
-        
-        return this;
-    }
-    
-    
-=======
  * @author thale
  */
 public class WordWrapRenderer extends JTextArea implements TableCellRenderer{
@@ -61,5 +37,4 @@ public class WordWrapRenderer extends JTextArea implements TableCellRenderer{
 
         return this;
     }
->>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
 }

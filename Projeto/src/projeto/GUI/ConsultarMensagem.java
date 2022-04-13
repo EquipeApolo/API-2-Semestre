@@ -6,7 +6,6 @@ package projeto.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.Main;
@@ -27,20 +26,8 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
          jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
          
-<<<<<<< HEAD
-         jTMensagens.getColumnModel().getColumn(0).setPreferredWidth(27);
-jTMensagens.getColumnModel().getColumn(1).setPreferredWidth(50);
-jTMensagens.getColumnModel().getColumn(2).setPreferredWidth(20);
-jTMensagens.getColumnModel().getColumn(3).setPreferredWidth(200);
-jTMensagens.getColumnModel().getColumn(4).setPreferredWidth(20);
-jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-         
-          lerTabela();
-          jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
-=======
           readTable();
 
->>>>>>> 76839273f9109d5b8e6057d39f341067c0b448ff
     }
 
     /**
@@ -58,6 +45,7 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         nomeClienteTextField = new javax.swing.JTextField();
         nomeQuemEnviouTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTMensagens = new javax.swing.JTable();
@@ -87,21 +75,26 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/User.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeQuemEnviouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
@@ -110,10 +103,15 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +132,6 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
                 "Nome do Cliente", "Responsável pelo Registro", "Meio", "Conteúdo", "Data"
             }
         ));
-        jTMensagens.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jTMensagens.setName(""); // NOI18N
         jTMensagens.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,8 +149,8 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addGap(0, 0, 0))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,8 +212,8 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }//GEN-LAST:event_nomeQuemEnviouTextFieldActionPerformed
 
     private void jTMensagensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTMensagensMouseClicked
-
-        int linhaSelecionada =  jTMensagens.getSelectedRow();
+        // TODO add your handling code here:
+                int linhaSelecionada =  jTMensagens.getSelectedRow();
         
          String cliente = (String)jTMensagens.getValueAt(linhaSelecionada, 0);
          String quemEnviou = (String)jTMensagens.getValueAt(linhaSelecionada, 1);
@@ -234,7 +231,6 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
                 exibitExibirLinhasTabela.setVisible(true);
             }
         });
-
     }//GEN-LAST:event_jTMensagensMouseClicked
 
     /**
@@ -273,7 +269,7 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         });
     }
     
-    public void lerTabela(){
+    public void readTable(){
         DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
         
          tabelaMensagens.setNumRows(0);
@@ -301,6 +297,7 @@ jTMensagens.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
