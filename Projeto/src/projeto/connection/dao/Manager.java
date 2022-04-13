@@ -3,7 +3,6 @@ package projeto.connection.dao;
 
 
 import java.text.ParseException;
-import projeto.connection.dao.MensagemDAO;
 import projeto.model.Mensagem;
 
 import java.text.SimpleDateFormat;
@@ -13,24 +12,42 @@ import java.util.logging.Logger;
 
 public class Manager {
 
-    public Manager(){
+    private final MensagemDAO dao;
 
+    public Manager(){
+        this.dao = new MensagemDAO();
+    }
+
+    public MensagemDAO getMensagemDAO(){
+        return this.dao;    
+    }
+
+    public void criarTabelas(){
+        this.dao.createTable();
     }
 
     public void cadastrarMensagem(Mensagem mensagem){
-        MensagemDAO.addMensagemToDatabase(mensagem);
+        this.dao.addMensagemToDatabase(mensagem);
     }
 
     public void deletarMensagem(int id_mensagem){
-        MensagemDAO.deleteMensagemFromDatabase(id_mensagem);
+        this.dao.deleteMensagemFromDatabase(id_mensagem);
     }
 
     public void deletarMensagem(Mensagem mensagem){
-        MensagemDAO.deleteMensagemFromDatabase(mensagem.getId());
+        this.dao.deleteMensagemFromDatabase(mensagem.getId());
     }
 
     public List<Mensagem> pegarTodasMensagens(){
-        return MensagemDAO.getTodasMensagens();
+        return this.dao.getTodasMensagens();
+    }
+
+    public List<Mensagem> pegarMensagensPorQuemEnviou(String quemEnviou){
+        return this.dao.getMensagensPorQuemEnviou(quemEnviou);
+    }
+
+    public List<Mensagem> pegarMensagensPorCliente(String cliente){
+        return this.dao.getMensagensPorCliente(cliente);
     }
 
     public String transformarData(long data){
@@ -38,7 +55,7 @@ public class Manager {
         return simpleDateFormat.format(data);
     }
     
-        public long destransformarData(String data){
+    public long destransformarData(String data){
         data = data.replace("às", "-");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         try {

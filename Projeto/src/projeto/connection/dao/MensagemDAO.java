@@ -14,7 +14,7 @@ import projeto.connection.ConnectionFactory;
 
 public class MensagemDAO {
 
-    public static void createTable(){
+    public void createTable(){
         String sql = "CREATE TABLE IF NOT EXISTS mensagem(id int AUTO_INCREMENT, quem_enviou varchar(30), cliente varchar(30) not null, meio varchar(20) not null, conteudo text not null, data_horario bigint not null, PRIMARY KEY (id)) DEFAULT CHARSET=utf8;";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
@@ -25,7 +25,7 @@ public class MensagemDAO {
     }
 
 
-    public static void addMensagemToDatabase(Mensagem mensagem){
+    public void addMensagemToDatabase(Mensagem mensagem){
         String sql = "INSERT INTO mensagem(meio,quem_enviou,cliente,conteudo,data_horario) VALUES (?,?,?,?,?);";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
@@ -42,7 +42,7 @@ public class MensagemDAO {
     }
 
 
-	public static void deleteMensagemFromDatabase(int id_mensagem){
+    public void deleteMensagemFromDatabase(int id_mensagem){
         String sql = "DELETE FROM mensagem WHERE id = ?;";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
@@ -54,7 +54,7 @@ public class MensagemDAO {
         }
     }
 
-    public static List<Mensagem> getTodasMensagens(){
+    public List<Mensagem> getTodasMensagens(){
         List<Mensagem> listaMensagens = new ArrayList<>();
         String sql = "SELECT * FROM mensagem;";
        
@@ -81,10 +81,10 @@ public class MensagemDAO {
         return listaMensagens;
     }
     
-    public static List<Mensagem> getMensagensPorQuemEnviou(String nomeQuemEnviou){
+    public List<Mensagem> getMensagensPorQuemEnviou(String nomeQuemEnviou){
         List<Mensagem> mensagens = new ArrayList<>();
         
-        if(nomeQuemEnviou.isBlank()){
+        if(nomeQuemEnviou == null){
             nomeQuemEnviou = "%";
         }
         
@@ -106,10 +106,10 @@ public class MensagemDAO {
         return mensagens;
     }
     
-    public static List<Mensagem> getMensagensPorCliente(String nomeDoCliente){
+    public List<Mensagem> getMensagensPorCliente(String nomeDoCliente){
         List<Mensagem> mensagens = new ArrayList<>();
         
-        if(nomeDoCliente.isBlank()){
+        if(nomeDoCliente == null){
             nomeDoCliente = "%";
         }
         

@@ -6,6 +6,7 @@ package projeto.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.Main;
@@ -23,11 +24,14 @@ public class ConsultarMensagem extends javax.swing.JFrame {
      */
     public ConsultarMensagem() {
         initComponents();
-         DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
-         jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
+        DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
+        jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
          
-          readTable();
+        readTable();
 
+        setTitle("Pro4Tech - Consultar mensagens");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -177,7 +181,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         String quemEnviou = nomeQuemEnviouTextField.getText();
         
         
-        MensagemDAO mensagemDAO = new MensagemDAO();
+        MensagemDAO mensagemDAO = Main.getManager().getMensagemDAO();
         
         List<Mensagem> listaMensagens = new ArrayList<>();
         
@@ -233,50 +237,13 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jTMensagensMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarMensagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarMensagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarMensagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarMensagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConsultarMensagem().setVisible(true);
-
-            }
-        });
-    }
     
     public void readTable(){
         DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
         
          tabelaMensagens.setNumRows(0);
         
-        MensagemDAO mensagemDAO = new MensagemDAO();
-        
-       List<Mensagem> listaMensagens = mensagemDAO.getTodasMensagens();
+       List<Mensagem> listaMensagens = Main.getManager().pegarTodasMensagens();
         
         for(Mensagem mensagem: listaMensagens){
             tabelaMensagens.addRow(new Object[]{
