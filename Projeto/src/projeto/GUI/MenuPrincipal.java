@@ -75,7 +75,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
-        jMenuBar2.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar2.setBackground(new java.awt.Color(204, 204, 204));
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
         jMenu5.setText("Mensagens");
