@@ -111,6 +111,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
         jMenu6.setText("Sobre");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu6ActionPerformed(evt);
+            }
+        });
         jMenuBar2.add(jMenu6);
 
         setJMenuBar(jMenuBar2);
@@ -145,6 +150,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         new ConsultarMensagem().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // TODO add your handling code here:
+        new TelaSobre().setVisible(true);
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
