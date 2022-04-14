@@ -33,6 +33,26 @@
  
 
  → [Voltar ao topo](#topo)
+    
+ ## Entregas
+    
+<br>
+    
+<span id="relatório">
+ 
+ ## :clipboard: Relatórios
+Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando em "Ver relatório". 
+    
+| Sprint | Entrega | Status | Relatório |
+|:-----:|:----------:|:---------:|:---------:|
+| 01 | 19/09/2021 | ✔️ | [ver relatório]() |
+| 02 | 10/10/2021 | :white_check_mark: | [ver relatório] |
+| 03 | 07/11/2021 | :white_check_mark: | [ver relatório] |
+ 
+<span id="projeto">
+    
+<br>
+    
  
  ## 📌 Backlog Priorizado
     
