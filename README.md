@@ -45,7 +45,7 @@ Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando e
     
 | Sprint | Entrega | Status | Relatório |
 |:-----:|:----------:|:---------:|:---------:|
-| 01 | 14/04/2022 | ✔️ | [ver relatório]() |
+| 01 | 14/04/2022 | ✔️ | [ver relatório](Artefatos/relatorios/primeira-sprint/readme.md) |
 | 02 | 15/05/2022 | :white_check_mark: | [ver relatório]() |
 | 03 | 05/06/2022 | :white_check_mark: | [ver relatório]() |
  
