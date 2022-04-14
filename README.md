@@ -45,9 +45,9 @@ Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando e
     
 | Sprint | Entrega | Status | Relatório |
 |:-----:|:----------:|:---------:|:---------:|
-| 01 | 19/09/2021 | ✔️ | [ver relatório]() |
-| 02 | 10/10/2021 | :white_check_mark: | [ver relatório] |
-| 03 | 07/11/2021 | :white_check_mark: | [ver relatório] |
+| 01 | 14/04/2022 | ✔️ | [ver relatório]() |
+| 02 | 15/05/2022 | :white_check_mark: | [ver relatório]() |
+| 03 | 05/06/2022 | :white_check_mark: | [ver relatório]() |
  
 <span id="projeto">
     
