@@ -5,15 +5,13 @@ package projeto.model;
 public class Mensagem {
 
     private int id;
-    private String nomeCliente;
-    private String quemEnviou;
+    private int idDestinatario;
     private String meio;
     private String conteudo;
     private long data;
 
-    public Mensagem(String cliente, String quemEnviou, String meioContato, String mensagem, long horario){
-        this.nomeCliente = cliente;
-        this.quemEnviou = quemEnviou;
+    public Mensagem(int dest, String meioContato, String mensagem, long horario){
+        this.idDestinatario = dest;
         this.meio = meioContato;
         this.conteudo = mensagem;
         this.data = horario;
@@ -25,18 +23,6 @@ public class Mensagem {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getQuemEnviou() {
-        return quemEnviou;
-    }
-
-    public void setQuemEnviou(String quemEnviou) {
-        this.quemEnviou = quemEnviou;
-    }
-
-    public String getNomeCliente(){
-        return this.nomeCliente;
     }
 
     public String getConteudo() {
@@ -51,6 +37,16 @@ public class Mensagem {
         return meio;
     }
 
+    public int getIdDestinatario() {
+        return idDestinatario;
+    }
+
+    public void setIdDestinatario(int idDestinatario) {
+        this.idDestinatario = idDestinatario;
+    }
+    
+    
+
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
@@ -63,7 +59,4 @@ public class Mensagem {
         this.meio = meio;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
 }

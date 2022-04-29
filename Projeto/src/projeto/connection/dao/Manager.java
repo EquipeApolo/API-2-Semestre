@@ -5,6 +5,7 @@ package projeto.connection.dao;
 import java.text.ParseException;
 import projeto.model.Mensagem;
 
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,9 +14,17 @@ import java.util.logging.Logger;
 public class Manager {
 
     private final MensagemDAO dao;
+    private final UsuarioDAO uDao;
+    private final MensagemIndividualDAO mIndiDAO;
+    private final ProjetoDAO proDAO;
+    private final MensagemColetivaDAO mColeDAO;
 
     public Manager(){
         this.dao = new MensagemDAO();
+        this.uDao = new UsuarioDAO();
+        this.mIndiDAO = new MensagemIndividualDAO();
+        this.proDAO = new ProjetoDAO();
+        this.mColeDAO = new MensagemColetivaDAO();
     }
 
     public MensagemDAO getMensagemDAO(){
@@ -23,7 +32,11 @@ public class Manager {
     }
 
     public void criarTabelas(){
-        this.dao.createTable();
+        //this.dao.createTable();
+        this.uDao.createTable();
+        this.mIndiDAO.createTable();
+        this.proDAO.createTable();
+        this.mColeDAO.createTable();
     }
 
     public void cadastrarMensagem(Mensagem mensagem){

@@ -1,6 +1,12 @@
 
 package projeto;
 
+import projeto.connection.dao.UsuarioDAO;
+import projeto.connection.dao.ProjetoDAO;
+import projeto.connection.dao.MensagemIndividualDAO;
+import projeto.connection.dao.MensagemColetivaDAO;
+
+
 import projeto.connection.dao.Manager;
 import projeto.connection.ConnectionFactory;
 
