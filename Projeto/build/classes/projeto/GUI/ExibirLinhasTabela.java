@@ -21,8 +21,8 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
         
         this.mensagem = mensagem;
         
-//        nomeClienteTextField.setText(mensagem.getNomeCliente());
-//        quemEnviouTextField.setText(mensagem.getQuemEnviou());
+        nomeClienteTextField.setText(mensagem.getNomeCliente());
+        quemEnviouTextField.setText(mensagem.getQuemEnviou());
         meioTextField.setText(mensagem.getMeio());
         jTextArea1.setText(mensagem.getConteudo());
 

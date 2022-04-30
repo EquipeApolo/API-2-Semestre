@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.Main;
+import projeto.connection.dao.MensagemDAO;
 import projeto.model.Mensagem;
 
 /**
@@ -180,28 +181,28 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         String quemEnviou = nomeQuemEnviouTextField.getText();
         
         
-//        MensagemDAO mensagemDAO = Main.getManager().getMensagemDAO();
+        MensagemDAO mensagemDAO = Main.getManager().getMensagemDAO();
         
         List<Mensagem> listaMensagens = new ArrayList<>();
         
          if ( nomeCliente.isEmpty() == false ) {
-//             listaMensagens = mensagemDAO.getMensagensPorCliente(nomeCliente);             
+             listaMensagens = mensagemDAO.getMensagensPorCliente(nomeCliente);             
          }else{ 
       
-//             listaMensagens = mensagemDAO.getMensagensPorQuemEnviou(quemEnviou);
+             listaMensagens = mensagemDAO.getMensagensPorQuemEnviou(quemEnviou);
          }
                 
          DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
          tabelaMensagens.setNumRows(0);
         
         for(Mensagem mensagem: listaMensagens){
-//            tabelaMensagens.addRow(new Object[]{
-//                mensagem.getNomeCliente(),
-//                mensagem.getQuemEnviou(),
-//                mensagem.getMeio(),
-//                mensagem.getConteudo(),
-//                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
-//                });
+            tabelaMensagens.addRow(new Object[]{
+                mensagem.getNomeCliente(),
+                mensagem.getQuemEnviou(),
+                mensagem.getMeio(),
+                mensagem.getConteudo(),
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
+                });
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -224,14 +225,14 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          String mensagem = (String)jTMensagens.getValueAt(linhaSelecionada, 3);
          long horario = (long)Main.getManager().destransformarData((String)jTMensagens.getValueAt(linhaSelecionada, 4));
                  
-//        Mensagem mensagemSelecionada = new Mensagem(cliente, quemEnviou, meioContato, mensagem, horario);
+        Mensagem mensagemSelecionada = new Mensagem(cliente, quemEnviou, meioContato, mensagem, horario);
         
         
                  java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-//                ExibirLinhasTabela exibitExibirLinhasTabela = new ExibirLinhasTabela(mensagemSelecionada);
-//                exibitExibirLinhasTabela.setVisible(true);
+                ExibirLinhasTabela exibitExibirLinhasTabela = new ExibirLinhasTabela(mensagemSelecionada);
+                exibitExibirLinhasTabela.setVisible(true);
             }
         });
     }//GEN-LAST:event_jTMensagensMouseClicked
@@ -242,17 +243,17 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         
          tabelaMensagens.setNumRows(0);
         
-//       List<Mensagem> listaMensagens = Main.getManager().pegarTodasMensagens();
+       List<Mensagem> listaMensagens = Main.getManager().pegarTodasMensagens();
         
-//        for(Mensagem mensagem: listaMensagens){
-//            tabelaMensagens.addRow(new Object[]{
-//                mensagem.getNomeCliente(),
-//                mensagem.getQuemEnviou(),
-//                mensagem.getMeio(),
-//                mensagem.getConteudo(),
-//                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
-//                });
-//        }
+        for(Mensagem mensagem: listaMensagens){
+            tabelaMensagens.addRow(new Object[]{
+                mensagem.getNomeCliente(),
+                mensagem.getQuemEnviou(),
+                mensagem.getMeio(),
+                mensagem.getConteudo(),
+                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
+                });
+        }
 
 
         jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());

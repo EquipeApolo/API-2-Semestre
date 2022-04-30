@@ -214,7 +214,7 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         if  (!((jTextField1.getText().isEmpty()) || (jTextField4.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || (jTextArea2.getText().isEmpty()))){
             
                     
-//               Main.getManager().cadastrarMensagem(new Mensagem(jTextField1.getText(), jTextField4.getText(), jTextField2.getText(), jTextArea2.getText(), System.currentTimeMillis() ));
+               Main.getManager().cadastrarMensagem(new Mensagem(jTextField1.getText(), jTextField4.getText(), jTextField2.getText(), jTextArea2.getText(), System.currentTimeMillis() ));
                JOptionPane.showMessageDialog(null, "Mensagem cadastrada com sucesso!");
                dispose(); 
             
