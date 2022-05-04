@@ -12,7 +12,8 @@ import projeto.connection.ConnectionFactory;
 
 import java.sql.SQLException;
 
-import projeto.GUI.MenuPrincipal;
+import projeto.GUI.menu.MenuPrincipal;
+import projeto.GUI.menu.MenuPrincipal_Suporte;
 
 public class Main {
 
@@ -36,9 +37,9 @@ public class Main {
 
         manager.criarTabelas();
         
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        MenuPrincipal_Suporte menuPrincipal_suporte = new MenuPrincipal_Suporte();
 
-        menuPrincipal.setVisible(true);
+        menuPrincipal_suporte.setVisible(true);
 
     }
 
