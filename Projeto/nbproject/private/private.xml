@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/TelaSobreGeral.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/CadastrarMensagem.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/Main.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/connection/ConnectionFactory.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/MenuPrincipal.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/ExibirLinhasTabela.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/TelaCadastrarUsuario.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/ConsultarMensagem.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/projeto/GUI/TelaLogin.java</file>
+            <file>file:/C:/Users/jenny/Desktop/API-2-Semestre/Projeto/src/TelaUsuariosCadastrados.java</file>
+        </group>
     </open-files>
 </project-private>

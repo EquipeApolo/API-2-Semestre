@@ -153,7 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
         // TODO add your handling code here:
-        new TelaSobre().setVisible(true);
+        new TelaSobreGeral().setVisible(true);
     }//GEN-LAST:event_jMenu6ActionPerformed
 
 
