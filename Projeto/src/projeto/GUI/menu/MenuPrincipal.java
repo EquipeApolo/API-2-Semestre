@@ -9,7 +9,7 @@ import projeto.GUI.mensagem.CadastrarMensagem;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import projeto.GUI.TelaSobre;
+import projeto.GUI.TelaSobreGeral;
 import projeto.Main;
 
 /**
@@ -46,12 +46,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jButton1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        label_pro4Tech = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        menu_mensagens = new javax.swing.JMenu();
+        menuItem_adicionarMensagem = new javax.swing.JMenuItem();
+        menuItem_consultarMensagem = new javax.swing.JMenuItem();
+        menu_sobre = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
 
@@ -61,10 +61,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
+        label_pro4Tech.setBackground(new java.awt.Color(255, 255, 255));
+        label_pro4Tech.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
 
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(label_pro4Tech, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -72,54 +72,54 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                .addComponent(label_pro4Tech, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addComponent(jLabel1)
+                .addComponent(label_pro4Tech)
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jMenuBar2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
-        jMenu5.setText("Mensagens");
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+        menu_mensagens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
+        menu_mensagens.setText("Mensagens");
+        menu_mensagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
+                menu_mensagensActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
-        jMenuItem1.setText("Adicionar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_adicionarMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        menuItem_adicionarMensagem.setText("Adicionar");
+        menuItem_adicionarMensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItem_adicionarMensagemActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        menu_mensagens.add(menuItem_adicionarMensagem);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
-        jMenuItem2.setText("Consultar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_consultarMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        menuItem_consultarMensagem.setText("Consultar");
+        menuItem_consultarMensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItem_consultarMensagemActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        menu_mensagens.add(menuItem_consultarMensagem);
 
-        jMenuBar2.add(jMenu5);
+        jMenuBar2.add(menu_mensagens);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
-        jMenu6.setText("Sobre");
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+        menu_sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
+        menu_sobre.setText("Sobre");
+        menu_sobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
+                menu_sobreActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu6);
+        jMenuBar2.add(menu_sobre);
 
         setJMenuBar(jMenuBar2);
 
@@ -137,38 +137,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItem_adicionarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_adicionarMensagemActionPerformed
      
          new CadastrarMensagem().setVisible(true);
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItem_adicionarMensagemActionPerformed
 
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+    private void menu_mensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_mensagensActionPerformed
         // TODO add your handling code here:
    
-    }//GEN-LAST:event_jMenu5ActionPerformed
+    }//GEN-LAST:event_menu_mensagensActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuItem_consultarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_consultarMensagemActionPerformed
         // TODO add your handling code here:
         
         new ConsultarMensagem().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuItem_consultarMensagemActionPerformed
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+    private void menu_sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_sobreActionPerformed
         // TODO add your handling code here:
-        new TelaSobre().setVisible(true);
-    }//GEN-LAST:event_jMenu6ActionPerformed
+        new TelaSobreGeral().setVisible(true);
+    }//GEN-LAST:event_menu_sobreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JLabel label_pro4Tech;
+    private javax.swing.JMenuItem menuItem_adicionarMensagem;
+    private javax.swing.JMenuItem menuItem_consultarMensagem;
+    private javax.swing.JMenu menu_mensagens;
+    private javax.swing.JMenu menu_sobre;
     // End of variables declaration//GEN-END:variables
 }

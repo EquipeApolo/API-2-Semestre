@@ -24,7 +24,7 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
 //        nomeClienteTextField.setText(mensagem.getNomeCliente());
 //        quemEnviouTextField.setText(mensagem.getQuemEnviou());
         meioTextField.setText(mensagem.getMeio());
-        jTextArea1.setText(mensagem.getConteudo());
+        conteudo.setText(mensagem.getConteudo());
 
         
         setTitle("Pro4Tech - Exibindo mensagem");
@@ -42,16 +42,16 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
     private void initComponents() {
 
         meioTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        label_meioEnvio = new javax.swing.JLabel();
         quemEnviouTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        label_conteudo = new javax.swing.JLabel();
+        label_nomeCliente = new javax.swing.JLabel();
+        Button_cancelar = new javax.swing.JButton();
         nomeClienteTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        label_responsavelRegistro = new javax.swing.JLabel();
+        label_mensagemRegistrada = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        conteudo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,8 +62,8 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Meio de envio:");
+        label_meioEnvio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_meioEnvio.setText("Meio de envio:");
 
         quemEnviouTextField.setEditable(false);
         quemEnviouTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -72,16 +72,16 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Conteúdo:");
+        label_conteudo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_conteudo.setText("Conteúdo:");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Nome do Cliente:");
+        label_nomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_nomeCliente.setText("Nome do Cliente:");
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Button_cancelar.setText("Cancelar");
+        Button_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Button_cancelarActionPerformed(evt);
             }
         });
 
@@ -92,17 +92,17 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Responsável pelo registro: ");
+        label_responsavelRegistro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_responsavelRegistro.setText("Responsável pelo registro: ");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel7.setText("Mensagem Registrada");
+        label_mensagemRegistrada.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        label_mensagemRegistrada.setText("Mensagem Registrada");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        conteudo.setEditable(false);
+        conteudo.setColumns(20);
+        conteudo.setLineWrap(true);
+        conteudo.setRows(5);
+        jScrollPane1.setViewportView(conteudo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,13 +112,13 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 180, Short.MAX_VALUE)
+                        .addGap(0, 179, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(Button_cancelar)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(label_mensagemRegistrada)
                                 .addGap(197, 197, 197))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
@@ -128,18 +128,18 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
+                            .addComponent(label_responsavelRegistro)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(quemEnviouTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
+                            .addComponent(quemEnviouTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
+                            .addComponent(label_nomeCliente)
                             .addGap(63, 63, 63)
                             .addComponent(nomeClienteTextField))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
+                            .addComponent(label_conteudo)
                             .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
+                            .addComponent(label_meioEnvio)
                             .addGap(79, 79, 79)
                             .addComponent(meioTextField)))
                     .addContainerGap()))
@@ -148,28 +148,28 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel7)
-                .addGap(165, 165, 165)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(label_mensagemRegistrada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(Button_cancelar)
                 .addGap(30, 30, 30))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(73, 73, 73)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
+                        .addComponent(label_nomeCliente)
                         .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(quemEnviouTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(label_responsavelRegistro, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
+                        .addComponent(label_meioEnvio)
                         .addComponent(meioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jLabel4)
+                    .addComponent(label_conteudo)
                     .addGap(348, 348, 348)))
         );
 
@@ -185,11 +185,11 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
 
     }//GEN-LAST:event_quemEnviouTextFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Button_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_cancelarActionPerformed
         // TODO add your handling code here:
 
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Button_cancelarActionPerformed
 
     private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
         // TODO add your handling code here:
@@ -197,14 +197,14 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton Button_cancelar;
+    private javax.swing.JTextArea conteudo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel label_conteudo;
+    private javax.swing.JLabel label_meioEnvio;
+    private javax.swing.JLabel label_mensagemRegistrada;
+    private javax.swing.JLabel label_nomeCliente;
+    private javax.swing.JLabel label_responsavelRegistro;
     private javax.swing.JTextField meioTextField;
     private javax.swing.JTextField nomeClienteTextField;
     private javax.swing.JTextField quemEnviouTextField;

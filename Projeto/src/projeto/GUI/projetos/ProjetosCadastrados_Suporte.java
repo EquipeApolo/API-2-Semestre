@@ -23,8 +23,8 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
      */
     public ProjetosCadastrados_Suporte() {
         initComponents();
-        DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
-        jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
+        DefaultTableModel tabelaMensagens =  (DefaultTableModel) table_projetoCadastrado.getModel();
+        table_projetoCadastrado.setRowSorter(new TableRowSorter(tabelaMensagens));
          
         readTable();
 
@@ -43,18 +43,18 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        label_nomeProjeto = new javax.swing.JLabel();
         nomeClienteTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        label_iconeMensagem = new javax.swing.JLabel();
+        Button_adicionar = new javax.swing.JButton();
+        Button_consultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTMensagens = new javax.swing.JTable();
+        table_projetoCadastrado = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("NOME DO PROJETO");
+        label_nomeProjeto.setText("NOME DO PROJETO");
 
         nomeClienteTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,19 +62,19 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Projeto.png"))); // NOI18N
+        label_iconeMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Projeto.png"))); // NOI18N
 
-        jButton2.setText("Adicionar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Button_adicionar.setText("Adicionar");
+        Button_adicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Button_adicionarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Button_consultar.setText("Consultar");
+        Button_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Button_consultarActionPerformed(evt);
             }
         });
 
@@ -91,15 +91,15 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
                                 .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(label_iconeMensagem)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)))
+                                .addComponent(label_nomeProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)))
                         .addGap(44, 44, 44))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Button_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Button_adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,18 +107,18 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_nomeProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_iconeMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(Button_adicionar)
+                    .addComponent(Button_consultar))
                 .addGap(28, 28, 28))
         );
 
-        jTMensagens.setModel(new javax.swing.table.DefaultTableModel(
+        table_projetoCadastrado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -129,13 +129,13 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
                 "Nome do Cliente", "Nome do Projeto"
             }
         ));
-        jTMensagens.setName(""); // NOI18N
-        jTMensagens.addMouseListener(new java.awt.event.MouseAdapter() {
+        table_projetoCadastrado.setName(""); // NOI18N
+        table_projetoCadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTMensagensMouseClicked(evt);
+                table_projetoCadastradoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTMensagens);
+        jScrollPane1.setViewportView(table_projetoCadastrado);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -173,18 +173,18 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeClienteTextFieldActionPerformed
 
-    private void jTMensagensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTMensagensMouseClicked
+    private void table_projetoCadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_projetoCadastradoMouseClicked
         // TODO add your handling code here:
                
-    }//GEN-LAST:event_jTMensagensMouseClicked
+    }//GEN-LAST:event_table_projetoCadastradoMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Button_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_adicionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Button_adicionarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Button_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_consultarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_Button_consultarActionPerformed
 
     
     public void readTable(){
@@ -193,14 +193,14 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton Button_adicionar;
+    private javax.swing.JButton Button_consultar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTMensagens;
+    private javax.swing.JLabel label_iconeMensagem;
+    private javax.swing.JLabel label_nomeProjeto;
     private javax.swing.JTextField nomeClienteTextField;
+    private javax.swing.JTable table_projetoCadastrado;
     // End of variables declaration//GEN-END:variables
 }

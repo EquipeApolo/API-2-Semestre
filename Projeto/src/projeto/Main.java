@@ -11,7 +11,6 @@ import projeto.connection.dao.Manager;
 import projeto.connection.ConnectionFactory;
 
 import java.sql.SQLException;
-import projeto.GUI.TelaCadastrarUsuario;
 
 import projeto.GUI.menu.MenuPrincipal;
 import projeto.GUI.menu.MenuPrincipal_Suporte;
@@ -38,10 +37,9 @@ public class Main {
 
         manager.criarTabelas();
         
-        MenuPrincipal menuPrincipal_suporte = new MenuPrincipal();
+        MenuPrincipal_Suporte menuPrincipal_suporte = new MenuPrincipal_Suporte();
 
-//        menuPrincipal_suporte.setVisible(true);
-        new TelaCadastrarUsuario().setVisible(true);
+        menuPrincipal_suporte.setVisible(true);
 
     }
 

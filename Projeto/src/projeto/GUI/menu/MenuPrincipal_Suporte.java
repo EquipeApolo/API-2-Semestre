@@ -9,8 +9,11 @@ import projeto.GUI.mensagem.ConsultarMensagem;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import projeto.GUI.TelaSobreGeral;
 import projeto.GUI.projetos.CadastrarProjeto_Suporte;
 import projeto.GUI.projetos.ProjetosCadastrados_Suporte;
+import projeto.GUI.usuario.TelaCadastrarUsuario;
+import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
 
 /**
@@ -49,13 +52,15 @@ public class MenuPrincipal_Suporte extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        menu_mensagem = new javax.swing.JMenu();
+        menuItem_adicionarMensagem = new javax.swing.JMenuItem();
+        menuItem_consultarMensagem = new javax.swing.JMenuItem();
+        menu_gerenciar = new javax.swing.JMenu();
+        menuItem_adicionarProjetos = new javax.swing.JMenuItem();
+        menuItem_projetosCadastrados = new javax.swing.JMenuItem();
+        menuItem_cadastrarUsuario = new javax.swing.JMenuItem();
+        menuItem_usuarioCadastrado = new javax.swing.JMenuItem();
+        menu_sobre = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
 
@@ -88,70 +93,88 @@ public class MenuPrincipal_Suporte extends javax.swing.JFrame {
 
         jMenuBar2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
-        jMenu5.setText("Mensagens");
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+        menu_mensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
+        menu_mensagem.setText("Mensagens");
+        menu_mensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
+                menu_mensagemActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
-        jMenuItem1.setText("Adicionar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_adicionarMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        menuItem_adicionarMensagem.setText("Adicionar");
+        menuItem_adicionarMensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItem_adicionarMensagemActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        menu_mensagem.add(menuItem_adicionarMensagem);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
-        jMenuItem2.setText("Consultar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_consultarMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        menuItem_consultarMensagem.setText("Consultar");
+        menuItem_consultarMensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItem_consultarMensagemActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        menu_mensagem.add(menuItem_consultarMensagem);
 
-        jMenuBar2.add(jMenu5);
+        jMenuBar2.add(menu_mensagem);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Engrenagem.png"))); // NOI18N
-        jMenu7.setText("Gerenciar");
-        jMenu7.addActionListener(new java.awt.event.ActionListener() {
+        menu_gerenciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Engrenagem.png"))); // NOI18N
+        menu_gerenciar.setText("Gerenciar");
+        menu_gerenciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu7ActionPerformed(evt);
+                menu_gerenciarActionPerformed(evt);
             }
         });
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
-        jMenuItem4.setText("Adicionar Projeto");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_adicionarProjetos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        menuItem_adicionarProjetos.setText("Adicionar Projeto");
+        menuItem_adicionarProjetos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuItem_adicionarProjetosActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem4);
+        menu_gerenciar.add(menuItem_adicionarProjetos);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
-        jMenuItem5.setText("Projetos Cadastrados");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_projetosCadastrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        menuItem_projetosCadastrados.setText("Projetos Cadastrados");
+        menuItem_projetosCadastrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuItem_projetosCadastradosActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem5);
+        menu_gerenciar.add(menuItem_projetosCadastrados);
 
-        jMenuBar2.add(jMenu7);
-
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
-        jMenu6.setText("Sobre");
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_cadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        menuItem_cadastrarUsuario.setText("Cadastrar Usuários");
+        menuItem_cadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
+                menuItem_cadastrarUsuarioActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu6);
+        menu_gerenciar.add(menuItem_cadastrarUsuario);
+
+        menuItem_usuarioCadastrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        menuItem_usuarioCadastrado.setText("Usuários Cadastrados");
+        menuItem_usuarioCadastrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_usuarioCadastradoActionPerformed(evt);
+            }
+        });
+        menu_gerenciar.add(menuItem_usuarioCadastrado);
+
+        jMenuBar2.add(menu_gerenciar);
+
+        menu_sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
+        menu_sobre.setText("Sobre");
+        menu_sobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_sobreActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(menu_sobre);
 
         setJMenuBar(jMenuBar2);
 
@@ -169,55 +192,67 @@ public class MenuPrincipal_Suporte extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItem_adicionarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_adicionarMensagemActionPerformed
      
          new CadastrarMensagem().setVisible(true);
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItem_adicionarMensagemActionPerformed
 
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+    private void menu_mensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_mensagemActionPerformed
         // TODO add your handling code here:
    
-    }//GEN-LAST:event_jMenu5ActionPerformed
+    }//GEN-LAST:event_menu_mensagemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuItem_consultarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_consultarMensagemActionPerformed
         // TODO add your handling code here:
         
         new ConsultarMensagem().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuItem_consultarMensagemActionPerformed
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+    private void menu_sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_sobreActionPerformed
         // TODO add your handling code here:
-        //new TelaSobre().setVisible(true);
-    }//GEN-LAST:event_jMenu6ActionPerformed
+        new TelaSobreGeral().setVisible(true);
+    }//GEN-LAST:event_menu_sobreActionPerformed
 
-    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
+    private void menu_gerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_gerenciarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu7ActionPerformed
+    }//GEN-LAST:event_menu_gerenciarActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuItem_adicionarProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_adicionarProjetosActionPerformed
         // TODO add your handling code here:
         new CadastrarProjeto_Suporte().setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuItem_adicionarProjetosActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuItem_projetosCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_projetosCadastradosActionPerformed
         // TODO add your handling code here:
         new ProjetosCadastrados_Suporte().setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuItem_projetosCadastradosActionPerformed
+
+    private void menuItem_cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_cadastrarUsuarioActionPerformed
+        // TODO add your handling code here:
+        new TelaCadastrarUsuario().setVisible(true);
+    }//GEN-LAST:event_menuItem_cadastrarUsuarioActionPerformed
+
+    private void menuItem_usuarioCadastradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_usuarioCadastradoActionPerformed
+        // TODO add your handling code here:
+        new TelaUsuariosCadastrados().setVisible(true);
+    }//GEN-LAST:event_menuItem_usuarioCadastradoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem menuItem_adicionarMensagem;
+    private javax.swing.JMenuItem menuItem_adicionarProjetos;
+    private javax.swing.JMenuItem menuItem_cadastrarUsuario;
+    private javax.swing.JMenuItem menuItem_consultarMensagem;
+    private javax.swing.JMenuItem menuItem_projetosCadastrados;
+    private javax.swing.JMenuItem menuItem_usuarioCadastrado;
+    private javax.swing.JMenu menu_gerenciar;
+    private javax.swing.JMenu menu_mensagem;
+    private javax.swing.JMenu menu_sobre;
     // End of variables declaration//GEN-END:variables
 }

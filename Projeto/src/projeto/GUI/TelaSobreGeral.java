@@ -27,21 +27,21 @@ public class TelaSobreGeral extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        textoTextArea = new javax.swing.JTextArea();
+        Button_retornar = new javax.swing.JButton();
+        label_pro4Tech = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Nesse sistema, é possivel realizar o cadastro de mensagens, consultas gerais dos cadastros por tópicos específicos, tal como nome do cliente ou responsável pelo registro.\n \nDessa forma, a Pro4tech consegue organizar e centralizar todos as mensagens recebidas de diferentes meios em um único sistema que pode ser acessado pelos colaboradores da empresa. ");
-        jScrollPane2.setViewportView(jTextArea2);
+        textoTextArea.setColumns(20);
+        textoTextArea.setLineWrap(true);
+        textoTextArea.setRows(5);
+        textoTextArea.setText("Nesse sistema, é possivel realizar o cadastro de mensagens, consultas gerais dos cadastros por tópicos específicos, tal como nome do cliente ou responsável pelo registro.\n \nDessa forma, a Pro4tech consegue organizar e centralizar todos as mensagens recebidas de diferentes meios em um único sistema que pode ser acessado pelos colaboradores da empresa. ");
+        jScrollPane2.setViewportView(textoTextArea);
 
-        jButton1.setText("Retornar");
+        Button_retornar.setText("Retornar");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
+        label_pro4Tech.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,8 +53,8 @@ public class TelaSobreGeral extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))
+                            .addComponent(Button_retornar)
+                            .addComponent(label_pro4Tech))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -62,11 +62,11 @@ public class TelaSobreGeral extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(label_pro4Tech)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Button_retornar)
                 .addGap(20, 20, 20))
         );
 
@@ -109,9 +109,9 @@ public class TelaSobreGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton Button_retornar;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel label_pro4Tech;
+    private javax.swing.JTextArea textoTextArea;
     // End of variables declaration//GEN-END:variables
 }
