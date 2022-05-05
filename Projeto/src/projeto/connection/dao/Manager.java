@@ -3,15 +3,20 @@ package projeto.connection.dao;
 
 
 import java.text.ParseException;
-import projeto.model.Mensagem;
 
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import projeto.Main;
+import projeto.model.Projeto;
+import projeto.model.Usuario;
 
 public class Manager {
+
+
+    private Usuario usuarioLogado;
+
 
     private final UsuarioDAO uDao;
     private final MensagemIndividualDAO mIndiDAO;
@@ -33,7 +38,15 @@ public class Manager {
         this.mColeDAO.createTable();
     }
 
-    public ProjetoDAO getProDAO() {
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
+
+    public ProjetoDAO getProjetoDAO() {
         return proDAO;
     }
 
@@ -49,31 +62,33 @@ public class Manager {
         return uDao;
     }
     
+    public void criarProjeto(Projeto projeto){
+        this.proDAO.addProjetoToDatabase(projeto);
+    }
     
+    public boolean existeUsuario(String userName){
+        return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getUserName().equalsIgnoreCase(userName));
+    }
 
-//    public void cadastrarMensagem(Mensagem mensagem){
-//        this.dao.addMensagemToDatabase(mensagem);
-//    }
-//
-//    public void deletarMensagem(int id_mensagem){
-//        this.dao.deleteMensagemFromDatabase(id_mensagem);
-//    }
-//
-//    public void deletarMensagem(Mensagem mensagem){
-//        this.dao.deleteMensagemFromDatabase(mensagem.getId());
-//    }
-//
-//    public List<Mensagem> pegarTodasMensagens(){
-//        return this.dao.getTodasMensagens();
-//    }
-//
-//    public List<Mensagem> pegarMensagensPorQuemEnviou(String quemEnviou){
-//        return this.dao.getMensagensPorQuemEnviou(quemEnviou);
-//    }
-//
-//    public List<Mensagem> pegarMensagensPorCliente(String cliente){
-//        return this.dao.getMensagensPorCliente(cliente);
-//    }
+    public Usuario getUsuarioByUserName(String userName){
+        if(!existeUsuario(userName)) return null;
+        return 
+            this.uDao.getTodosUsuarios().stream().filter(r-> r.getUserName().equalsIgnoreCase(userName)).findFirst().get();
+    }
+
+    public Usuario getUsuarioByID(int id){
+        return this.uDao.getTodosUsuarios().stream().filter(r-> r.getId() == id).findFirst().get();
+    }
+
+    public boolean existeProjeto(String projeto){
+        return this.proDAO.getTodosProjetos().stream().anyMatch(r->r.getNome().equalsIgnoreCase(projeto));
+    }
+
+    public Projeto getProjetoByName(String projeto){
+        if(!existeProjeto(projeto)) return null;
+        return 
+            this.proDAO.getTodosProjetos().stream().filter(r->r.getNome().equalsIgnoreCase(projeto)).findFirst().get();
+    }
 
     public String transformarData(long data){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
@@ -81,7 +96,7 @@ public class Manager {
     }
     
     public long destransformarData(String data){
-        data = data.replace("às", "-");
+        if(data.contains("às")) data = data.replace("às", "-");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         try {
             return simpleDateFormat.parse(data).getTime();

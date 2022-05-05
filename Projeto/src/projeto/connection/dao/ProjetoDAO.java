@@ -45,7 +45,7 @@ public class ProjetoDAO {
         }
     }
     
-    public List<Projeto> getTodosUsuarios(){
+    public List<Projeto> getTodosProjetos(){
         List<Projeto> lista = new ArrayList<>();
         String sql = "SELECT * FROM projetos;";
        
@@ -68,5 +68,31 @@ public class ProjetoDAO {
         }
 
         return lista;
+    }
+
+    public List<Projeto> getProjetosPorCliente(int idCliente){
+        List<Projeto> projetos = new ArrayList<>();
+
+        
+        String sql = "SELECT * FROM projetos where idcliente like '%" + idCliente + "%'";
+       
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Projeto projeto = new Projeto(
+                            resultSet.getInt("id"),
+                            resultSet.getString("nome"),
+                            resultSet.getString("descricao"),
+                            idCliente
+                );
+                projetos.add(projeto);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return projetos;
     }
 }

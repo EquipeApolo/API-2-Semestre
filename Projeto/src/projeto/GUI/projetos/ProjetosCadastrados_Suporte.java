@@ -4,13 +4,14 @@
  */
 package projeto.GUI.projetos;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.Main;
-import projeto.model.Mensagem;
+import projeto.model.Projeto;
+import projeto.model.Usuario;
 
 /**
  *
@@ -44,9 +45,8 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         label_nomeProjeto = new javax.swing.JLabel();
-        nomeClienteTextField = new javax.swing.JTextField();
+        nomeProjetoTextField = new javax.swing.JTextField();
         label_iconeMensagem = new javax.swing.JLabel();
-        Button_adicionar = new javax.swing.JButton();
         Button_consultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -56,20 +56,13 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
 
         label_nomeProjeto.setText("NOME DO PROJETO");
 
-        nomeClienteTextField.addActionListener(new java.awt.event.ActionListener() {
+        nomeProjetoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeClienteTextFieldActionPerformed(evt);
+                nomeProjetoTextFieldActionPerformed(evt);
             }
         });
 
         label_iconeMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Projeto.png"))); // NOI18N
-
-        Button_adicionar.setText("Adicionar");
-        Button_adicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_adicionarActionPerformed(evt);
-            }
-        });
 
         Button_consultar.setText("Consultar");
         Button_consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,23 +77,19 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(label_iconeMensagem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label_nomeProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)))
-                        .addGap(44, 44, 44))
+                        .addComponent(nomeProjetoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Button_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Button_adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addComponent(label_iconeMensagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_nomeProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)))
+                .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Button_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,25 +99,31 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
                     .addComponent(label_nomeProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_iconeMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button_adicionar)
-                    .addComponent(Button_consultar))
-                .addGap(28, 28, 28))
+                .addComponent(nomeProjetoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(Button_consultar)
+                .addGap(32, 32, 32))
         );
 
         table_projetoCadastrado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome do Cliente", "Nome do Projeto"
+                "Nome do Cliente", "Nome do Projeto", "Descrição"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_projetoCadastrado.setName(""); // NOI18N
         table_projetoCadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -169,38 +164,80 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
+    private void nomeProjetoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeProjetoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeClienteTextFieldActionPerformed
+    }//GEN-LAST:event_nomeProjetoTextFieldActionPerformed
 
     private void table_projetoCadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_projetoCadastradoMouseClicked
         // TODO add your handling code here:
-               
-    }//GEN-LAST:event_table_projetoCadastradoMouseClicked
+        int linhaSelecionada =  table_projetoCadastrado.getSelectedRow();
+        
+        String nome = (String)table_projetoCadastrado.getValueAt(linhaSelecionada, 1);
+        
+        Projeto projeto = Main.getManager().getProjetoByName(nome);
 
-    private void Button_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_adicionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Button_adicionarActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                
+                ExibirProjetosTabela exibitExibirLinhasTabela = new ExibirProjetosTabela(projeto);
+                exibitExibirLinhasTabela.setVisible(true);
+            }
+        });     
+    }//GEN-LAST:event_table_projetoCadastradoMouseClicked
 
     private void Button_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_consultarActionPerformed
         // TODO add your handling code here:
+        String nomeProjeto = nomeProjetoTextField.getText();
+        
+        if(!Main.getManager().existeProjeto(nomeProjeto)){
+            JOptionPane.showMessageDialog(null, "Projeto não encontrado");
+            return;
+        }
+        
+        Projeto projeto = Main.getManager().getProjetoByName(nomeProjeto);
+        Usuario cliente = Main.getManager().getUsuarioByID(projeto.getIdCliente());
+                
+        DefaultTableModel tabelaProjetos =  (DefaultTableModel) table_projetoCadastrado.getModel();
+        tabelaProjetos.setNumRows(0);
+        tabelaProjetos.addRow(new Object[]{
+            cliente.getNome(),
+            projeto.getNome(),
+            projeto.getDescricao()
+        });
+        
+        
     }//GEN-LAST:event_Button_consultarActionPerformed
 
     
     public void readTable(){
+        DefaultTableModel tabelaProjetos =  (DefaultTableModel) table_projetoCadastrado.getModel();
+        
+        tabelaProjetos.setNumRows(0);
+        
+       List<Projeto> listaProjetos = Main.getManager().getProjetoDAO().getTodosProjetos();
+
+        for(Projeto projeto: listaProjetos){
+            Usuario cliente = Main.getManager().getUsuarioDao().getTodosUsuarios().stream().filter(r->  r.getId() == projeto.getId()).findFirst().get();
+              tabelaProjetos.addRow(new Object[]{
+                cliente.getNome(),
+                projeto.getNome(),
+                projeto.getDescricao()
+                });
+        }
+
+        table_projetoCadastrado.getColumnModel().getColumn(2).setCellRenderer(new projeto.GUI.WordWrapRenderer());
         
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_adicionar;
     private javax.swing.JButton Button_consultar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_iconeMensagem;
     private javax.swing.JLabel label_nomeProjeto;
-    private javax.swing.JTextField nomeClienteTextField;
+    private javax.swing.JTextField nomeProjetoTextField;
     private javax.swing.JTable table_projetoCadastrado;
     // End of variables declaration//GEN-END:variables
 }

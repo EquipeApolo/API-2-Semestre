@@ -22,7 +22,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         
-        setTitle("Pro4Tech - Cadastro de projeto");
+        setTitle("Pro4Tech");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
@@ -132,13 +132,12 @@ public class TelaLogin extends javax.swing.JFrame {
             return;
         }
         
-        if(!Main.getManager().getUsuarioDao().getTodosUsuarios().stream().anyMatch(r->r.getUserName().equalsIgnoreCase(usuarioTextField.getText()))){
+        if(!Main.getManager().existeUsuario(usuarioTextField.getText())){
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");            
             return;
         }
         
-        Usuario usuario = 
-            Main.getManager().getUsuarioDao().getTodosUsuarios().stream().filter(r->r.getUserName().equalsIgnoreCase(usuarioTextField.getText())).findFirst().get();
+        Usuario usuario = Main.getManager().getUsuarioByUserName(usuarioTextField.getText());
      
         if(usuario == null){
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");            
@@ -155,7 +154,9 @@ public class TelaLogin extends javax.swing.JFrame {
         }else{
             new MenuPrincipal_Suporte().setVisible(true);
         }
+        Main.getManager().setUsuarioLogado(usuario);
         dispose();
+
     }//GEN-LAST:event_button_entrarActionPerformed
 
 

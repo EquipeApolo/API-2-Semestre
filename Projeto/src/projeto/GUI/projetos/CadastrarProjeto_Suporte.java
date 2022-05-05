@@ -4,11 +4,11 @@
  */
 package projeto.GUI.projetos;
 
-import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projeto.Main;
-import projeto.model.Mensagem;
+import projeto.model.Usuario;
+import projeto.model.tipos.FuncaoUsuario;
 
 /**
  *
@@ -175,9 +175,31 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
 
     private void Button_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_cadastrarActionPerformed
         // TODO add your handling code here:
+        if(nomeClienteTextField.getText().isEmpty() || nomeProjetoTextField.getText().isEmpty() || descricaoTextArea.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios");
+            return;
+        }
+
+        if(!Main.getManager().existeUsuario(nomeClienteTextField.getText())){
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return;
+        }
+
+        if(Main.getManager().existeProjeto(nomeProjetoTextField.getText())){
+            JOptionPane.showMessageDialog(null, "O projeto informado já existe");
+            return;
+        }
+
+        Usuario cliente = Main.getManager().getUsuarioByUserName(nomeClienteTextField.getText());
+
+        if(cliente.getFuncaoUsuario() != FuncaoUsuario.CLIENTE.getId()){
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return;
+        }
         
-        
-                
+        Main.getManager().criarProjeto(new projeto.model.Projeto(nomeProjetoTextField.getText(), descricaoTextArea.getText(), cliente.getId()));
+        JOptionPane.showMessageDialog(null, "Projeto cadastrado com sucesso!");   
+        dispose();
     }//GEN-LAST:event_Button_cadastrarActionPerformed
 
     private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
