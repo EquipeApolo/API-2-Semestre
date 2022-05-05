@@ -4,6 +4,8 @@
  */
 package projeto.GUI.usuario;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author jenny
@@ -15,6 +17,10 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
      */
     public TelaCadastrarUsuario() {
         initComponents();
+        
+        setTitle("Pro4Tech - Cadastro de usuário");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**

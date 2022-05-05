@@ -33,6 +33,24 @@ public class Manager {
         this.mColeDAO.createTable();
     }
 
+    public ProjetoDAO getProDAO() {
+        return proDAO;
+    }
+
+    public MensagemColetivaDAO getmColeDAO() {
+        return mColeDAO;
+    }
+
+    public MensagemIndividualDAO getmIndiDAO() {
+        return mIndiDAO;
+    }
+
+    public UsuarioDAO getUsuarioDao() {
+        return uDao;
+    }
+    
+    
+
 //    public void cadastrarMensagem(Mensagem mensagem){
 //        this.dao.addMensagemToDatabase(mensagem);
 //    }

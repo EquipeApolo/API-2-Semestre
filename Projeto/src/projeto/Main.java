@@ -1,19 +1,14 @@
 
 package projeto;
 
-import projeto.connection.dao.UsuarioDAO;
-import projeto.connection.dao.ProjetoDAO;
-import projeto.connection.dao.MensagemIndividualDAO;
-import projeto.connection.dao.MensagemColetivaDAO;
-
-
 import projeto.connection.dao.Manager;
 import projeto.connection.ConnectionFactory;
 
 import java.sql.SQLException;
 
-import projeto.GUI.menu.MenuPrincipal;
-import projeto.GUI.menu.MenuPrincipal_Suporte;
+import projeto.GUI.menu.TelaLogin;
+import projeto.model.Usuario;
+
 
 public class Main {
 
@@ -37,9 +32,8 @@ public class Main {
 
         manager.criarTabelas();
         
-        MenuPrincipal_Suporte menuPrincipal_suporte = new MenuPrincipal_Suporte();
+        new TelaLogin().setVisible(true);
 
-        menuPrincipal_suporte.setVisible(true);
 
     }
 

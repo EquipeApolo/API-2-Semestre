@@ -12,24 +12,34 @@ public class Usuario {
     
     private int id;
     private String nome;
+    private String userName;
     private String senha;
     private int funcaoUsuario;
     
     
-    public Usuario(String nome, String senha, int tipo){
+    public Usuario(String nome, String userName, String senha, int tipo){
         this.nome = nome;
         this.senha = senha;
         this.funcaoUsuario = tipo;
+        this.userName = userName;
     }
     
-    public Usuario(int id, String nome, String senha, int tipo){
+    public Usuario(int id, String nome, String userName, String senha, int tipo){
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.funcaoUsuario = tipo;
+        this.userName = userName;
     }
-        
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
     public int getId() {
         return id;
     }

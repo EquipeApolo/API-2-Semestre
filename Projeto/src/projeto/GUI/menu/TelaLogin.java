@@ -4,6 +4,12 @@
  */
 package projeto.GUI.menu;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import projeto.Main;
+import projeto.model.Usuario;
+import projeto.model.tipos.FuncaoUsuario;
+
 /**
  *
  * @author jenny
@@ -15,6 +21,10 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        
+        setTitle("Pro4Tech - Cadastro de projeto");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -43,6 +53,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setText("Senha");
 
         button_entrar.setText("Entrar");
+        button_entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_entrarActionPerformed(evt);
+            }
+        });
 
         label_login.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         label_login.setText("Login ");
@@ -109,40 +124,40 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void button_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_entrarActionPerformed
+        // TODO add your handling code here:
+        
+        if(usuarioTextField.getText().isEmpty() || senhaPasswordField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios");
+            return;
         }
-        //</editor-fold>
+        
+        if(!Main.getManager().getUsuarioDao().getTodosUsuarios().stream().anyMatch(r->r.getUserName().equalsIgnoreCase(usuarioTextField.getText()))){
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");            
+            return;
+        }
+        
+        Usuario usuario = 
+            Main.getManager().getUsuarioDao().getTodosUsuarios().stream().filter(r->r.getUserName().equalsIgnoreCase(usuarioTextField.getText())).findFirst().get();
+     
+        if(usuario == null){
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");            
+            return;
+        }
+        
+        if(!usuario.getSenha().equals(new String(senhaPasswordField.getPassword()))){
+               JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");    
+            return;
+        }
+        
+        if(usuario.getFuncaoUsuario() == FuncaoUsuario.CLIENTE.getId()){
+            new MenuPrincipal().setVisible(true);
+        }else{
+            new MenuPrincipal_Suporte().setVisible(true);
+        }
+        dispose();
+    }//GEN-LAST:event_button_entrarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_entrar;
