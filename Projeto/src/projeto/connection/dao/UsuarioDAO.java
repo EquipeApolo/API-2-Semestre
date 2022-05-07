@@ -64,6 +64,13 @@ public class UsuarioDAO {
         }
     }
     
+    public Usuario getUsuarioByName(String name){
+        for(Usuario user : getTodosUsuarios()){
+            if(user.getNome().equalsIgnoreCase(name)) return user;
+        }
+        return null;
+    }
+    
     public List<Usuario> getTodosUsuarios(){
         List<Usuario> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuarios;";

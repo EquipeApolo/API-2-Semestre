@@ -13,8 +13,10 @@ import projeto.GUI.TelaSobreGeral;
 import projeto.GUI.projetos.CadastrarProjeto_Suporte;
 import projeto.GUI.projetos.ProjetosCadastrados_Suporte;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
+import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
 import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
+import projeto.model.tipos.FuncaoUsuario;
 
 /**
  *
@@ -230,7 +232,8 @@ public class MenuPrincipal_Suporte extends javax.swing.JFrame {
 
     private void menuItem_cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_cadastrarUsuarioActionPerformed
         // TODO add your handling code here:
-        new TelaCadastrarUsuario().setVisible(true);
+        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == FuncaoUsuario.SUPORTE.getId()) new TelaCadastrarUsuario().setVisible(true);
+        else new TelaCadastrarUsuarioAdmin().setVisible(true);
     }//GEN-LAST:event_menuItem_cadastrarUsuarioActionPerformed
 
     private void menuItem_usuarioCadastradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_usuarioCadastradoActionPerformed

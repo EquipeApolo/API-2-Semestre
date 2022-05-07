@@ -66,6 +66,10 @@ public class Manager {
         this.proDAO.addProjetoToDatabase(projeto);
     }
     
+    public void criarUsuario(Usuario usuario){
+        this.uDao.addUsuarioToDatabase(usuario);
+    }
+    
     public boolean existeUsuario(String userName){
         return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getUserName().equalsIgnoreCase(userName));
     }

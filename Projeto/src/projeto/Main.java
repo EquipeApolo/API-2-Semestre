@@ -7,8 +7,6 @@ import projeto.connection.ConnectionFactory;
 import java.sql.SQLException;
 
 import projeto.GUI.menu.TelaLogin;
-import projeto.model.Usuario;
-import projeto.model.tipos.FuncaoUsuario;
 
 
 public class Main {
@@ -32,7 +30,7 @@ public class Main {
         }
 
         manager.criarTabelas();
-
+        
         new TelaLogin().setVisible(true);
 
 

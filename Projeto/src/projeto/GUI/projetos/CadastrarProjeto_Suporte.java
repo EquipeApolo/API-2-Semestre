@@ -176,29 +176,29 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
     private void Button_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_cadastrarActionPerformed
         // TODO add your handling code here:
         if(nomeClienteTextField.getText().isEmpty() || nomeProjetoTextField.getText().isEmpty() || descricaoTextArea.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios");
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
             return;
         }
 
         if(!Main.getManager().existeUsuario(nomeClienteTextField.getText())){
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
             return;
         }
 
         if(Main.getManager().existeProjeto(nomeProjetoTextField.getText())){
-            JOptionPane.showMessageDialog(null, "O projeto informado já existe");
+            JOptionPane.showMessageDialog(null, "O projeto informado já existe", "Atenção!", 2);
             return;
         }
 
         Usuario cliente = Main.getManager().getUsuarioByUserName(nomeClienteTextField.getText());
 
         if(cliente.getFuncaoUsuario() != FuncaoUsuario.CLIENTE.getId()){
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
             return;
         }
         
         Main.getManager().criarProjeto(new projeto.model.Projeto(nomeProjetoTextField.getText(), descricaoTextArea.getText(), cliente.getId()));
-        JOptionPane.showMessageDialog(null, "Projeto cadastrado com sucesso!");   
+        JOptionPane.showMessageDialog(null, "Projeto cadastrado com sucesso");   
         dispose();
     }//GEN-LAST:event_Button_cadastrarActionPerformed
 

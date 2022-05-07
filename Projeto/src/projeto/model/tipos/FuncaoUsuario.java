@@ -34,4 +34,13 @@ public enum FuncaoUsuario {
         
         return null;
     }
+    
+    public static FuncaoUsuario getFuncaoByName(String name){
+        
+        for(FuncaoUsuario tipo : values()){
+            if(tipo.toString().equalsIgnoreCase(name)) return tipo;
+        }
+        
+        return null;
+    }
 }
