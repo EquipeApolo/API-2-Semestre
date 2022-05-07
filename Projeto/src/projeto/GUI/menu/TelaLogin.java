@@ -4,6 +4,8 @@
  */
 package projeto.GUI.menu;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projeto.Main;
@@ -25,6 +27,12 @@ public class TelaLogin extends javax.swing.JFrame {
         setTitle("Pro4Tech");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e){
+            Main.getConnectionFactory().closeConnection();
+            System.exit(0);
+        }
+        });
     }
 
     /**

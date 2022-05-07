@@ -1,12 +1,11 @@
 package projeto.GUI.usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.Main;
-import projeto.model.Projeto;
 import projeto.model.Usuario;
 import projeto.model.tipos.FuncaoUsuario;
 
@@ -51,7 +50,6 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         label_nomeUsuario = new javax.swing.JLabel();
         nomeUsuarioTextField = new javax.swing.JTextField();
-        Button_consultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsuarioCadastrado = new javax.swing.JTable();
 
@@ -66,11 +64,9 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
                 nomeUsuarioTextFieldActionPerformed(evt);
             }
         });
-
-        Button_consultar.setText("Consultar ");
-        Button_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_consultarActionPerformed(evt);
+        nomeUsuarioTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nomeUsuarioTextFieldKeyReleased(evt);
             }
         });
 
@@ -82,32 +78,37 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Login", "Nome", "Função"
+                "Nome", "Login", "Função"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableUsuarioCadastrado);
+        if (tableUsuarioCadastrado.getColumnModel().getColumnCount() > 0) {
+            tableUsuarioCadastrado.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(nomeUsuarioTextField)
+                        .addGap(10, 10, 10))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(nomeUsuarioTextField)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(Button_consultar)))
-                            .addGap(10, 10, 10))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(label_nomeUsuario)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_nomeUsuario))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +117,7 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
                 .addComponent(label_nomeUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomeUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Button_consultar)
-                .addGap(49, 49, 49)
+                .addGap(83, 83, 83)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -143,26 +142,37 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeUsuarioTextFieldActionPerformed
 
-    private void Button_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_consultarActionPerformed
+    private void nomeUsuarioTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeUsuarioTextFieldKeyReleased
         // TODO add your handling code here:
-        String nomeUsuario = nomeUsuarioTextField.getText();
-        Usuario usuario = Main.getManager().getUsuarioDao().getUsuarioByName(nomeUsuario);
-        
-        if(usuario == null){
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Atenção!", 2);
-            return;
-        }
-                
-        DefaultTableModel tabelaUsuarios =  (DefaultTableModel) tableUsuarioCadastrado.getModel();
+        String campo = nomeUsuarioTextField.getText();
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        List<Integer> idsUsuarios = new ArrayList<>();
+
+        DefaultTableModel tabelaUsuarios = (DefaultTableModel) tableUsuarioCadastrado.getModel(); 
         tabelaUsuarios.setNumRows(0);
-        tabelaUsuarios.addRow(new Object[]{
-            usuario.getUserName(),
-            usuario.getNome(),
-            FuncaoUsuario.getFuncaoByID(usuario.getFuncaoUsuario()).toString()
-        });
+
+        for(Usuario usuario : Main.getManager().getUsuarioDao().getUsuariosPorNome(campo)){
+            idsUsuarios.add(usuario.getId());
+        }
+        for(Usuario usuario : Main.getManager().getUsuarioDao().getUsuariosPorNomeUsuario(campo)){
+            if(!idsUsuarios.contains(usuario.getId())) idsUsuarios.add(usuario.getId());
+        }
+
+        for(int ids : idsUsuarios){
+            listaUsuarios.add(Main.getManager().getUsuarioByID(ids));
+        }
+
+        for(Usuario usuario : listaUsuarios){
+            tabelaUsuarios.addRow(new Object[]{
+                usuario.getUserName(),
+                usuario.getNome(),
+                FuncaoUsuario.getFuncaoByID(usuario.getFuncaoUsuario()).toString()
+                });
+        }
+
         
         
-    }//GEN-LAST:event_Button_consultarActionPerformed
+    }//GEN-LAST:event_nomeUsuarioTextFieldKeyReleased
 
     public void readTable(){
         DefaultTableModel tabelaUsuarios =  (DefaultTableModel) tableUsuarioCadastrado.getModel();
@@ -179,11 +189,9 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
                 });
         }
 
-        tableUsuarioCadastrado.getColumnModel().getColumn(2).setCellRenderer(new projeto.GUI.WordWrapRenderer());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_consultar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

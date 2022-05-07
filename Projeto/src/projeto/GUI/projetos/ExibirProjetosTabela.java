@@ -27,8 +27,8 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         
 //        nomeClienteTextField.setText(mensagem.getNomeCliente());
 //        quemEnviouTextField.setText(mensagem.getQuemEnviou());
-        Usuario cliente = Main.getManager().getUsuarioByID(projeto.getId());
-        nomeClienteTextField.setText(cliente.getNome());
+        Usuario cliente = Main.getManager().getUsuarioByID(projeto.getIdCliente());
+        nomeCliente.setText(cliente.getNome());
         conteudo.setText(projeto.getDescricao());
 
         
@@ -49,30 +49,24 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         label_conteudo = new javax.swing.JLabel();
         label_nomeCliente = new javax.swing.JLabel();
         Button_cancelar = new javax.swing.JButton();
-        nomeClienteTextField = new javax.swing.JTextField();
         label_mensagemRegistrada = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         conteudo = new javax.swing.JTextArea();
+        nomeCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         label_conteudo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_conteudo.setText("Conteúdo:");
 
         label_nomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_nomeCliente.setText("Cliente");
+        label_nomeCliente.setText("Cliente:");
 
         Button_cancelar.setText("Cancelar");
         Button_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_cancelarActionPerformed(evt);
-            }
-        });
-
-        nomeClienteTextField.setEditable(false);
-        nomeClienteTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeClienteTextFieldActionPerformed(evt);
             }
         });
 
@@ -85,51 +79,47 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         conteudo.setRows(5);
         jScrollPane1.setViewportView(conteudo);
 
+        nomeCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_mensagemRegistrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 430, Short.MAX_VALUE)
-                        .addComponent(Button_cancelar)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(label_conteudo)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addComponent(label_mensagemRegistrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(label_nomeCliente)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                    .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 430, Short.MAX_VALUE)
+                                .addComponent(Button_cancelar))
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(label_nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label_mensagemRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_nomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(label_conteudo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(Button_cancelar)
                 .addGap(30, 30, 30))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(73, 73, 73)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(label_nomeCliente)
-                        .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(456, Short.MAX_VALUE)))
         );
 
         pack();
@@ -141,10 +131,6 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Button_cancelarActionPerformed
 
-    private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeClienteTextFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_cancelar;
@@ -153,6 +139,6 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
     private javax.swing.JLabel label_conteudo;
     private javax.swing.JLabel label_mensagemRegistrada;
     private javax.swing.JLabel label_nomeCliente;
-    private javax.swing.JTextField nomeClienteTextField;
+    private javax.swing.JLabel nomeCliente;
     // End of variables declaration//GEN-END:variables
 }

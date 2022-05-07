@@ -190,8 +190,10 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
             return;
         }
 
-        Usuario cliente = Main.getManager().getUsuarioByUserName(nomeClienteTextField.getText());
 
+        System.out.println("AAA -> " + nomeClienteTextField.getText());
+        Usuario cliente = Main.getManager().getUsuarioByUserName(nomeClienteTextField.getText());
+        System.out.println("BBB -> " + cliente.getNome() + " @" + cliente.getUserName());
         if(cliente.getFuncaoUsuario() != FuncaoUsuario.CLIENTE.getId()){
             JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
             return;

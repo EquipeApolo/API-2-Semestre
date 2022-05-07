@@ -82,8 +82,8 @@ public class UsuarioDAO {
             while(resultSet.next()){
                 Usuario usuario = new Usuario(
                         resultSet.getInt("id"),
-                        resultSet.getString("username"),
                         resultSet.getString("nome"),
+                        resultSet.getString("username"),
                         resultSet.getString("senha"),
                         resultSet.getInt("funcaousuario")
                 );
@@ -95,5 +95,59 @@ public class UsuarioDAO {
         }
 
         return lista;
+    }
+
+    public List<Usuario> getUsuariosPorNome(String nome){
+        List<Usuario> usuarios = new ArrayList<>();
+
+        
+        String sql = "SELECT * FROM usuarios where nome like '%" + nome + "%'";
+       
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Usuario usuario = new Usuario(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("username"),
+                        resultSet.getString("senha"),
+                        resultSet.getInt("funcaousuario")
+                );
+                usuarios.add(usuario);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return usuarios;
+    }
+
+    public List<Usuario> getUsuariosPorNomeUsuario(String nomeUsuario){
+        List<Usuario> usuarios = new ArrayList<>();
+
+        
+        String sql = "SELECT * FROM usuarios where username like '%" + nomeUsuario + "%'";
+       
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Usuario usuario = new Usuario(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("senha"),
+                        resultSet.getInt("funcaousuario")
+                );
+                usuarios.add(usuario);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return usuarios;
     }
 }
