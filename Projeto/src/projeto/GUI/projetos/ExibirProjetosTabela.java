@@ -58,7 +58,7 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         setResizable(false);
 
         label_conteudo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_conteudo.setText("Conteúdo:");
+        label_conteudo.setText("Descrição:");
 
         label_nomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_nomeCliente.setText("Cliente:");

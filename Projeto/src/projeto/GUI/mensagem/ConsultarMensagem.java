@@ -54,6 +54,7 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         jTMensagens = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         label_nomeCliente.setText("NOME DO CLIENTE");
 

@@ -56,6 +56,7 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         label_nomeProjeto.setText("CONSULTA");
 
@@ -211,9 +212,9 @@ public class ProjetosCadastrados_Suporte extends javax.swing.JFrame {
             listaProjetos.addAll(Main.getManager().getProjetoDAO().getProjetosPorCliente(ids));
         }
 
-        List<Projeto> novaListaNesseCaralho = listaProjetos.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<Projeto>(Comparator.comparingInt(Projeto::getId))),
+        List<Projeto> novaListaProjetos = listaProjetos.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<Projeto>(Comparator.comparingInt(Projeto::getId))),
                                                            ArrayList::new));
-        for(Projeto projeto: novaListaNesseCaralho){
+        for(Projeto projeto: novaListaProjetos){
             if(!Main.getManager().existeUsuario(projeto.getIdCliente())) return;
             Usuario cliente = Main.getManager().getUsuarioByID(projeto.getIdCliente());
               Object[] obj = (new Object[]{

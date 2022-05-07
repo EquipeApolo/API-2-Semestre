@@ -52,6 +52,7 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -97,6 +98,7 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
         });
 
         descricaoTextArea.setColumns(20);
+        descricaoTextArea.setLineWrap(true);
         descricaoTextArea.setRows(5);
         jScrollPane2.setViewportView(descricaoTextArea);
 
@@ -190,10 +192,7 @@ public class CadastrarProjeto_Suporte extends javax.swing.JFrame {
             return;
         }
 
-
-        System.out.println("AAA -> " + nomeClienteTextField.getText());
         Usuario cliente = Main.getManager().getUsuarioByUserName(nomeClienteTextField.getText());
-        System.out.println("BBB -> " + cliente.getNome() + " @" + cliente.getUserName());
         if(cliente.getFuncaoUsuario() != FuncaoUsuario.CLIENTE.getId()){
             JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
             return;

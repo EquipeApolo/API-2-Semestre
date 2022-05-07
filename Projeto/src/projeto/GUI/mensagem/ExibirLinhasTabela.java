@@ -54,6 +54,7 @@ public class ExibirLinhasTabela extends javax.swing.JFrame {
         conteudo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         meioTextField.setEditable(false);
         meioTextField.addActionListener(new java.awt.event.ActionListener() {

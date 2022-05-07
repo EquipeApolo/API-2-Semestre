@@ -49,6 +49,7 @@ public class TelaCadastrarUsuarioAdmin extends javax.swing.JFrame {
         tipoPerfilComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         label_cadastro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         label_cadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

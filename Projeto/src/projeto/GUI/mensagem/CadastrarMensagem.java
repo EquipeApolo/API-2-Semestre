@@ -52,6 +52,7 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -84,6 +85,7 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         });
 
         label_cadastroMensagem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        label_cadastroMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_cadastroMensagem.setText("Cadastro de Mensagem");
 
         button_cadastrar.setText("Cadastrar");
@@ -107,10 +109,6 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button_cadastrar)
                 .addGap(8, 8, 8))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
-                .addComponent(label_cadastroMensagem)
-                .addGap(186, 186, 186))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +118,7 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                             .addComponent(label_meioEnvio))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(meioEnvioTextField)
+                            .addComponent(meioEnvioTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                             .addComponent(nomeClienteTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
@@ -128,7 +126,8 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label_conteudo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(label_cadastroMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
