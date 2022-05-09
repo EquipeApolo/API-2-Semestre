@@ -74,6 +74,10 @@ public class Manager {
         return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getUserName().equalsIgnoreCase(userName));
     }
 
+    public boolean existeUsuarioNome(String name){
+        return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getNome().equalsIgnoreCase(name));
+    }
+
     public boolean existeUsuario(int id){
         return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getId() == id);
     }

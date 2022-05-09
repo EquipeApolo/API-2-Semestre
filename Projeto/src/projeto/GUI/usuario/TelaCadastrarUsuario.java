@@ -158,6 +158,12 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado", "Atenção!", 2);
             return;
         }
+
+        if(Main.getManager().existeUsuarioNome(nomeTextField.getText())){
+            JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado", "Atenção!", 2);
+            return;
+        }
+        
         
         Main.getManager().criarUsuario(new Usuario(nomeTextField.getText(), nomeUsuarioTextField.getText(), new String(senhaPasswordField.getPassword()), 
                 FuncaoUsuario.CLIENTE.getId()));
