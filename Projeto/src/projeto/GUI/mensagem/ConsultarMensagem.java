@@ -4,13 +4,17 @@
  */
 package projeto.GUI.mensagem;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import projeto.GUI.menu.MenuPrincipal;
 import projeto.Main;
-import projeto.model.Mensagem;
+import projeto.model.MensagemColetiva;
+import projeto.model.MensagemIndividual;
+import projeto.model.Projeto;
+import projeto.model.Usuario;
+import projeto.model.tipos.FuncaoUsuario;
 
 /**
  *
@@ -23,8 +27,8 @@ public class ConsultarMensagem extends javax.swing.JFrame {
      */
     public ConsultarMensagem() {
         initComponents();
-        DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
-        jTMensagens.setRowSorter(new TableRowSorter(tabelaMensagens));
+        DefaultTableModel tabelaMensagens =  (DefaultTableModel) tabelaTipoMensagem.getModel();
+        tabelaTipoMensagem.setRowSorter(new TableRowSorter(tabelaMensagens));
          
         readTable();
 
@@ -42,234 +46,216 @@ public class ConsultarMensagem extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        label_nomeCliente = new javax.swing.JLabel();
-        label_responsavelRegistro = new javax.swing.JLabel();
-        nomeClienteTextField = new javax.swing.JTextField();
-        nomeQuemEnviouTextField = new javax.swing.JTextField();
-        button_consultar = new javax.swing.JButton();
-        label_iconUsuario = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaTipoMensagem = new javax.swing.JTable();
+        comboBoxTipoMensagem = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTMensagens = new javax.swing.JTable();
+        campoMensagens = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        botaoRetornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        label_nomeCliente.setText("NOME DO CLIENTE");
-
-        label_responsavelRegistro.setText("RESPONSÁVEL PELO REGISTRO");
-
-        nomeClienteTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeClienteTextFieldActionPerformed(evt);
-            }
-        });
-
-        nomeQuemEnviouTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeQuemEnviouTextFieldActionPerformed(evt);
-            }
-        });
-
-        button_consultar.setText("Consultar ");
-        button_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_consultarActionPerformed(evt);
-            }
-        });
-
-        label_iconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/User.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(button_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(label_iconUsuario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label_nomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeQuemEnviouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_responsavelRegistro))))
-                .addGap(44, 44, 44))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(label_responsavelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_nomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_iconUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeQuemEnviouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(button_consultar)
-                .addGap(25, 25, 25))
-        );
-
-        jTMensagens.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaTipoMensagem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nome do Cliente", "Responsável pelo Registro", "Meio", "Conteúdo", "Data"
+                "Nome", "id"
             }
-        ));
-        jTMensagens.setName(""); // NOI18N
-        jTMensagens.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTMensagensMouseClicked(evt);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTMensagens);
+        tabelaTipoMensagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaTipoMensagemMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelaTipoMensagem);
+        if (tabelaTipoMensagem.getColumnModel().getColumnCount() > 0) {
+            tabelaTipoMensagem.getColumnModel().getColumn(0).setResizable(false);
+            tabelaTipoMensagem.getColumnModel().getColumn(1).setResizable(false);
+        }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+        comboBoxTipoMensagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Coletiva" }));
+        comboBoxTipoMensagem.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxTipoMensagemItemStateChanged(evt);
+            }
+        });
+
+        jLabel1.setText("Tipo de mensagem:");
+
+        campoMensagens.setEditable(false);
+        campoMensagens.setColumns(20);
+        campoMensagens.setLineWrap(true);
+        campoMensagens.setRows(5);
+        jScrollPane1.setViewportView(campoMensagens);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Histórico de mensagens");
+
+        botaoRetornar.setText("Retornar");
+        botaoRetornar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRetornarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoRetornar)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxTipoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(107, 107, 107)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxTipoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(30, 30, 30)
+                .addComponent(botaoRetornar)
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_consultarActionPerformed
-        String nomeCliente = nomeClienteTextField.getText();
-        String quemEnviou = nomeQuemEnviouTextField.getText();
-        
-        
-//        MensagemDAO mensagemDAO = Main.getManager().getMensagemDAO();
-        
-        List<Mensagem> listaMensagens = new ArrayList<>();
-        
-         if ( nomeCliente.isEmpty() == false ) {
-//             listaMensagens = mensagemDAO.getMensagensPorCliente(nomeCliente);             
-         }else{ 
-      
-//             listaMensagens = mensagemDAO.getMensagensPorQuemEnviou(quemEnviou);
-         }
-                
-         DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
-         tabelaMensagens.setNumRows(0);
-        
-        for(Mensagem mensagem: listaMensagens){
-//            tabelaMensagens.addRow(new Object[]{
-//                mensagem.getNomeCliente(),
-//                mensagem.getQuemEnviou(),
-//                mensagem.getMeio(),
-//                mensagem.getConteudo(),
-//                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
-//                });
-        }
-        
-    }//GEN-LAST:event_button_consultarActionPerformed
-
-    private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
+    private void botaoRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetornarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeClienteTextFieldActionPerformed
+        dispose();
+    }//GEN-LAST:event_botaoRetornarActionPerformed
 
-    private void nomeQuemEnviouTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeQuemEnviouTextFieldActionPerformed
+    private void comboBoxTipoMensagemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxTipoMensagemItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeQuemEnviouTextFieldActionPerformed
+        readTable();
+    }//GEN-LAST:event_comboBoxTipoMensagemItemStateChanged
 
-    private void jTMensagensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTMensagensMouseClicked
+    private void tabelaTipoMensagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaTipoMensagemMouseClicked
         // TODO add your handling code here:
-                int linhaSelecionada =  jTMensagens.getSelectedRow();
+        int linhaSelecionada = tabelaTipoMensagem.getSelectedRow();
+        int id = Integer.parseInt(tabelaTipoMensagem.getValueAt(linhaSelecionada, 1) + "");
+        String selecionado = comboBoxTipoMensagem.getSelectedItem() + "";
         
-         String cliente = (String)jTMensagens.getValueAt(linhaSelecionada, 0);
-         String quemEnviou = (String)jTMensagens.getValueAt(linhaSelecionada, 1);
-         String meioContato = (String)jTMensagens.getValueAt(linhaSelecionada, 2);
-         String mensagem = (String)jTMensagens.getValueAt(linhaSelecionada, 3);
-         long horario = (long)Main.getManager().destransformarData((String)jTMensagens.getValueAt(linhaSelecionada, 4));
-                 
-//        Mensagem mensagemSelecionada = new Mensagem(cliente, quemEnviou, meioContato, mensagem, horario);
-        
-        
-                 java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-//                ExibirLinhasTabela exibitExibirLinhasTabela = new ExibirLinhasTabela(mensagemSelecionada);
-//                exibitExibirLinhasTabela.setVisible(true);
+        if(selecionado.equalsIgnoreCase("Individual")){
+            
+            List<MensagemIndividual> mensagens = Main.getManager().getmIndiDAO().getMensagensPorRemetente(id);
+            
+            String string = "";
+            for(MensagemIndividual mensagem : mensagens){
+                Usuario remetente = Main.getManager().getUsuarioByID(id);
+                string += "[" + Main.getManager().transformarData(mensagem.getData()) + "] " + remetente.getNome() + ": " + mensagem.getConteudo() + "\n";
             }
-        });
-    }//GEN-LAST:event_jTMensagensMouseClicked
+            
+            campoMensagens.setText(string);
+        }else{
+            
+            List<MensagemColetiva> mensagens = Main.getManager().getmColeDAO().getMensagensPorDestinatario(id);
+            
+            String string = "";
+            for(MensagemColetiva mensagem : mensagens){
+                string += "[" + Main.getManager().transformarData(mensagem.getData()) + "]: " + mensagem.getConteudo() + "\n";
+            }
+            
+            campoMensagens.setText(string);
+        }
+    }//GEN-LAST:event_tabelaTipoMensagemMouseClicked
 
     
     public void readTable(){
-        DefaultTableModel tabelaMensagens =  (DefaultTableModel) jTMensagens.getModel();
+        String selecionado = comboBoxTipoMensagem.getSelectedItem() + "";
+        
+        
+        
+        
+        DefaultTableModel tabelaMensagens =  (DefaultTableModel) tabelaTipoMensagem.getModel();
         
          tabelaMensagens.setNumRows(0);
-        
-//       List<Mensagem> listaMensagens = Main.getManager().pegarTodasMensagens();
-        
-//        for(Mensagem mensagem: listaMensagens){
-//            tabelaMensagens.addRow(new Object[]{
-//                mensagem.getNomeCliente(),
-//                mensagem.getQuemEnviou(),
-//                mensagem.getMeio(),
-//                mensagem.getConteudo(),
-//                Main.getManager().transformarData(mensagem.getData()).replace("-", "às")
-//                });
-//        }
+         
+         if(selecionado.equalsIgnoreCase("Individual")){
+             
+             List<MensagemIndividual> listaMensagens = Main.getManager().getmIndiDAO().getMensagensPorDestinatario(Main.getManager().getUsuarioLogado().getId());
+             
+             
+             for(MensagemIndividual mensagens : listaMensagens){
+                 int idRemetente = mensagens.getIdRemetente();
+                 Usuario remetente = Main.getManager().getUsuarioByID(idRemetente);
+                 tabelaMensagens.addRow(new Object[]{
+                        remetente.getNome(),
+                        mensagens.getId()
+                 });
+             }
+             
+         }else{
+             
+             List<MensagemColetiva> listaMensagens = Main.getManager().getmColeDAO().getMensagensPorRemetente(Main.getManager().getUsuarioLogado().getId());
+             
+             for(MensagemColetiva mensagens : listaMensagens){
+                 int idDest = mensagens.getIdDestinatario();
+                 Projeto dest = Main.getManager().getProjetoDAO().getProjetoPorID(idDest);
+                 tabelaMensagens.addRow(new Object[] {
+                        dest.getNome(),
+                        idDest
+                 });
+             }
+         }
 
-
-        jTMensagens.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_consultar;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton botaoRetornar;
+    private javax.swing.JTextArea campoMensagens;
+    private javax.swing.JComboBox<String> comboBoxTipoMensagem;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTMensagens;
-    private javax.swing.JLabel label_iconUsuario;
-    private javax.swing.JLabel label_nomeCliente;
-    private javax.swing.JLabel label_responsavelRegistro;
-    private javax.swing.JTextField nomeClienteTextField;
-    private javax.swing.JTextField nomeQuemEnviouTextField;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tabelaTipoMensagem;
     // End of variables declaration//GEN-END:variables
 }

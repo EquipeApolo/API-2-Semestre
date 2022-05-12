@@ -95,8 +95,8 @@ public class ProjetoDAO {
 
         return projetos;
     }
-
-    public List<Projeto> getProjetosPorCliente(int idCliente){
+    
+        public List<Projeto> getProjetosPorCliente(int idCliente){
         List<Projeto> projetos = new ArrayList<>();
 
         
@@ -120,5 +120,29 @@ public class ProjetoDAO {
         }
 
         return projetos;
+    }
+
+    public Projeto getProjetoPorID(int id){
+        
+        String sql = "SELECT * FROM projetos where id = ?;";
+       
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                return new Projeto(
+                            resultSet.getInt("id"),
+                            resultSet.getString("nome"),
+                            resultSet.getString("descricao"),
+                            resultSet.getInt("idcliente")
+                );
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
