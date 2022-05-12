@@ -29,8 +29,8 @@ public class MensagemColetivaDAO {
         String sql = "INSERT INTO mensagem_coletiva(idremetente,idprojeto,meio,conteudo,data_horario) VALUES (?,?,?,?,?);";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
-            statement.setInt(1, mensagem.getIdRemetente());
-            statement.setInt(2, mensagem.getIdDestinatario());
+            statement.setInt(1, mensagem.getIdDestinatario());
+            statement.setInt(2, mensagem.getIdRemetente());
             statement.setString(3, mensagem.getMeio());
             statement.setString(4, mensagem.getConteudo());
             statement.setLong(5, mensagem.getData());

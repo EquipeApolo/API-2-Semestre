@@ -26,8 +26,8 @@ public class MensagemIndividualDAO {
         String sql = "INSERT INTO mensagem_individual(idremetente,iddestinatario,meio,conteudo,data_horario) VALUES (?,?,?,?,?);";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
-            statement.setInt(1, mensagem.getIdRemetente());
-            statement.setInt(2, mensagem.getIdDestinatario());
+            statement.setInt(1, mensagem.getIdDestinatario());
+            statement.setInt(2, mensagem.getIdRemetente());
             statement.setString(3, mensagem.getMeio());
             statement.setString(4, mensagem.getConteudo());
             statement.setLong(5, mensagem.getData());
@@ -99,6 +99,89 @@ public class MensagemIndividualDAO {
             e.printStackTrace();
         }
 
+        return mensagens;
+    }
+    
+    public List<Integer> getTeste(int idUsuario){
+        
+        List<Integer> lista = new ArrayList<>();
+        
+        String sql = "SELECT * FROM mensagem_individual where idremetente like '%" + idUsuario + "%'";
+        
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                if(!lista.contains(resultSet.getInt("iddestinatario"))){
+                    lista.add(resultSet.getInt("iddestinatario"));
+                }
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        sql = "SELECT * FROM mensagem_individual where iddestinatario like '%" + idUsuario + "%'";
+        
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                if(!lista.contains(resultSet.getInt("idremetente"))){
+                    lista.add(resultSet.getInt("idremetente"));
+                }
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return lista;
+    }
+    
+    public List<MensagemIndividual> getMensagens(int user1, int user2){
+        List<MensagemIndividual> mensagens = new ArrayList<>();
+        
+        String sql = "SELECT * FROM mensagem_individual where idremetente = '" + user1 + "' and iddestinatario = '" + user2 + "'";
+        
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("idremetente"),
+                        resultSet.getInt("iddestinatario"), 
+                        resultSet.getString("meio"), 
+                        resultSet.getString("conteudo"), 
+                        resultSet.getLong("data_horario")
+                );
+                mensagens.add(mensagem);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        sql = "SELECT * FROM mensagem_individual where idremetente = '" + user2 + "' and iddestinatario = '" + user1 + "'";
+        
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("idremetente"),
+                        resultSet.getInt("iddestinatario"), 
+                        resultSet.getString("meio"), 
+                        resultSet.getString("conteudo"), 
+                        resultSet.getLong("data_horario")
+                );
+                mensagens.add(mensagem);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
         return mensagens;
     }
     

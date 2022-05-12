@@ -4,7 +4,12 @@
  */
 package projeto.GUI.mensagem;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -86,7 +91,9 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabelaTipoMensagem);
         if (tabelaTipoMensagem.getColumnModel().getColumnCount() > 0) {
             tabelaTipoMensagem.getColumnModel().getColumn(0).setResizable(false);
-            tabelaTipoMensagem.getColumnModel().getColumn(1).setResizable(false);
+            tabelaTipoMensagem.getColumnModel().getColumn(1).setMinWidth(0);
+            tabelaTipoMensagem.getColumnModel().getColumn(1).setPreferredWidth(0);
+            tabelaTipoMensagem.getColumnModel().getColumn(1).setMaxWidth(0);
         }
 
         comboBoxTipoMensagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Coletiva" }));
@@ -145,8 +152,8 @@ public class ConsultarMensagem extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(botaoRetornar)
                 .addGap(15, 15, 15))
@@ -184,22 +191,26 @@ public class ConsultarMensagem extends javax.swing.JFrame {
         
         if(selecionado.equalsIgnoreCase("Individual")){
             
-            List<MensagemIndividual> mensagens = Main.getManager().getmIndiDAO().getMensagensPorRemetente(id);
+            List<MensagemIndividual> mensagens = Main.getManager().getmIndiDAO().getMensagens(id, Main.getManager().getUsuarioLogado().getId());
             
+            List<MensagemIndividual> novaLista = mensagens.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(()-> new TreeSet<MensagemIndividual>(Comparator.comparingLong(MensagemIndividual::getData))), ArrayList::new));
             String string = "";
-            for(MensagemIndividual mensagem : mensagens){
-                Usuario remetente = Main.getManager().getUsuarioByID(id);
-                string += "[" + Main.getManager().transformarData(mensagem.getData()) + "] " + remetente.getNome() + ": " + mensagem.getConteudo() + "\n";
+            for(MensagemIndividual mensagem : novaLista){
+                Usuario remetente = Main.getManager().getUsuarioByID(mensagem.getIdRemetente());
+                string += "[" + Main.getManager().transformarData(mensagem.getData()).replace("-", "às") + "] " + remetente.getNome() + ": " + mensagem.getConteudo() + "\n";
             }
             
             campoMensagens.setText(string);
         }else{
             
             List<MensagemColetiva> mensagens = Main.getManager().getmColeDAO().getMensagensPorDestinatario(id);
+
+            List<MensagemColetiva> novaLista = mensagens.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(()-> new TreeSet<MensagemColetiva>(Comparator.comparingLong(MensagemColetiva::getData))), ArrayList::new));
             
             String string = "";
-            for(MensagemColetiva mensagem : mensagens){
-                string += "[" + Main.getManager().transformarData(mensagem.getData()) + "]: " + mensagem.getConteudo() + "\n";
+            for(MensagemColetiva mensagem : novaLista){
+                Usuario remetente = Main.getManager().getUsuarioByID(mensagem.getIdRemetente());
+                string += "[" + Main.getManager().transformarData(mensagem.getData()).replace("-", "às") + "] " + remetente.getNome() + ": " + mensagem.getConteudo() + "\n";
             }
             
             campoMensagens.setText(string);
@@ -219,28 +230,31 @@ public class ConsultarMensagem extends javax.swing.JFrame {
          
          if(selecionado.equalsIgnoreCase("Individual")){
              
-             List<MensagemIndividual> listaMensagens = Main.getManager().getmIndiDAO().getMensagensPorDestinatario(Main.getManager().getUsuarioLogado().getId());
+             List<Integer> minhaLista = Main.getManager().getmIndiDAO().getTeste(Main.getManager().getUsuarioLogado().getId());
              
              
-             for(MensagemIndividual mensagens : listaMensagens){
-                 int idRemetente = mensagens.getIdRemetente();
-                 Usuario remetente = Main.getManager().getUsuarioByID(idRemetente);
+             for(int ids : minhaLista){
+                 Usuario remetente = Main.getManager().getUsuarioByID(ids);
                  tabelaMensagens.addRow(new Object[]{
                         remetente.getNome(),
-                        mensagens.getId()
+                        ids
                  });
              }
              
          }else{
              
-             List<MensagemColetiva> listaMensagens = Main.getManager().getmColeDAO().getMensagensPorRemetente(Main.getManager().getUsuarioLogado().getId());
+             List<Projeto> listaProjetos;
              
-             for(MensagemColetiva mensagens : listaMensagens){
-                 int idDest = mensagens.getIdDestinatario();
-                 Projeto dest = Main.getManager().getProjetoDAO().getProjetoPorID(idDest);
+             if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == FuncaoUsuario.CLIENTE.getId()){
+                 listaProjetos = Main.getManager().getProjetoDAO().getProjetosPorCliente(Main.getManager().getUsuarioLogado().getId());
+             }else{
+                 listaProjetos = Main.getManager().getProjetoDAO().getTodosProjetos();
+             }
+             
+             for(Projeto projeto : listaProjetos){
                  tabelaMensagens.addRow(new Object[] {
-                        dest.getNome(),
-                        idDest
+                        projeto.getNome(),
+                        projeto.getId()
                  });
              }
          }

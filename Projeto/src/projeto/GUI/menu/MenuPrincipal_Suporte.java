@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import projeto.GUI.TelaSobreGeral;
+import projeto.GUI.mensagem.CadastrarMensagemCliente;
 import projeto.GUI.projetos.CadastrarProjeto_Suporte;
 import projeto.GUI.projetos.ProjetosCadastrados_Suporte;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
@@ -197,7 +198,7 @@ public class MenuPrincipal_Suporte extends javax.swing.JFrame {
 
     private void menuItem_adicionarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_adicionarMensagemActionPerformed
      
-         new CadastrarMensagem().setVisible(true);
+         new CadastrarMensagemCliente().setVisible(true);
         
     }//GEN-LAST:event_menuItem_adicionarMensagemActionPerformed
 
