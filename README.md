@@ -18,18 +18,18 @@
 <span id="requisitos">
 <h2> :bookmark_tabs: Requisitos Funcionais </h2>
 
-- [ ] Cadastros de Usuários, Clientes e Grupos; 
-- [ ] Perfis diferentes (administrador, suporte, cliente);
+- [x] Cadastros de Usuários, Clientes e Grupos; 
+- [x] Perfis diferentes (administrador, suporte, cliente);
 - [x] Administrador ou suporte cadastrar mensagens em nome de um cliente e marcar qual meio ela veio (email, whatsapp e etc);
-- [ ] Envio de mensagens individuais para um usuário do sistema;
-- [ ] Envio de mensagens coletivas para os grupos do sistema;
-- [x] Relatório de pessoas ou grupos a quem mais enviei mensagens.
+- [x] Envio de mensagens individuais para um usuário do sistema;
+- [x] Envio de mensagens coletivas para os grupos do sistema;
+- [ ] Relatório de pessoas ou grupos a quem mais enviei mensagens.
 
 <h3> Requisitos Não Funcionais </h3>
 
 - [x] Linguagem Java Desktop;
 - [x] SGBD MySQL;
-- [ ] Documentações;
+- [x] Documentações;
  
 
  → [Voltar ao topo](#topo)
