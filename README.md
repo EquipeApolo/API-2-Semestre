@@ -59,7 +59,7 @@ Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando e
 <p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Product%20backlog.png"></p>
  
  ## 📆 Sprints
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Big%20room%20planning%20(1).png"></p>  
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Big%20room%20planning%20(1)%20(1).png"></p>  
  
 <br>
 <span id="equipe">
