@@ -163,6 +163,11 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado", "Atenção!", 2);
             return;
         }
+
+        if(new String(senhaPasswordField.getPassword()).length() < 8){
+            JOptionPane.showMessageDialog(null, "A senha deve conter ao menos 8 caracteres", "Atenção!", 2);
+            return;
+        }
         
         
         Main.getManager().criarUsuario(new Usuario(nomeTextField.getText(), nomeUsuarioTextField.getText(), new String(senhaPasswordField.getPassword()), 
