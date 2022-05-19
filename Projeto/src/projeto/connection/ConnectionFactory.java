@@ -11,7 +11,7 @@ public class ConnectionFactory {
     private Connection connection;
 
     public ConnectionFactory() throws SQLException {
-        this.connection = DriverManager.getConnection("jdbc:mysql://localhost/projetoapi", "root", "thales098");
+        this.connection = DriverManager.getConnection("jdbc:mysql://dbfatec.mysql.database.azure.com:3306/projetoapi?user=fatec&password=projeto@1");
     }
 
     public Connection getConnection(){
