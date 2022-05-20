@@ -1,6 +1,4 @@
-
 package projeto.connection;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private Connection connection;
+    private final Connection connection;
 
     public ConnectionFactory() throws SQLException {
         this.connection = DriverManager.getConnection("jdbc:mysql://dbfatec.mysql.database.azure.com:3306/projetoapi?user=fatec&password=projeto@1");

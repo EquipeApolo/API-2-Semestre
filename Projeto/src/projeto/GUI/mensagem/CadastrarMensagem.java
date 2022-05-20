@@ -1,24 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package projeto.GUI.mensagem;
 
-import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projeto.Main;
 import projeto.model.Mensagem;
+import projeto.model.MensagemColetiva;
+import projeto.model.MensagemIndividual;
+import projeto.model.Projeto;
+import projeto.model.Usuario;
 
-/**
- *
- * @author jenny
- */
 public class CadastrarMensagem extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CadastrarMensagem1
-     */
     public CadastrarMensagem() {
         initComponents();
 
@@ -34,16 +26,17 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        meioEnvioTextField = new javax.swing.JTextField();
         label_meioEnvio = new javax.swing.JLabel();
         label_conteudo = new javax.swing.JLabel();
         label_nomeCliente = new javax.swing.JLabel();
         button_cancelar = new javax.swing.JButton();
-        nomeClienteTextField = new javax.swing.JTextField();
+        campoDestinatario = new javax.swing.JTextField();
         label_cadastroMensagem = new javax.swing.JLabel();
-        button_cadastrar = new javax.swing.JButton();
+        botaoCadastrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        conteudo = new javax.swing.JTextArea();
+        campoConteudo = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        campoTipoMensagem = new javax.swing.JComboBox<>();
 
         jLabel6.setText("jLabel6");
 
@@ -56,20 +49,13 @@ public class CadastrarMensagem extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        meioEnvioTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meioEnvioTextFieldActionPerformed(evt);
-            }
-        });
-
         label_meioEnvio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_meioEnvio.setText("Meio de envio(opcional):");
 
         label_conteudo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_conteudo.setText("Conteúdo:");
 
         label_nomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_nomeCliente.setText("Nome do Cliente:");
+        label_nomeCliente.setText("Destinatário:");
 
         button_cancelar.setText("Cancelar");
         button_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +64,9 @@ public class CadastrarMensagem extends javax.swing.JFrame {
             }
         });
 
-        nomeClienteTextField.addActionListener(new java.awt.event.ActionListener() {
+        campoDestinatario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeClienteTextFieldActionPerformed(evt);
+                campoDestinatarioActionPerformed(evt);
             }
         });
 
@@ -88,16 +74,22 @@ public class CadastrarMensagem extends javax.swing.JFrame {
         label_cadastroMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_cadastroMensagem.setText("Cadastro de Mensagem");
 
-        button_cadastrar.setText("Cadastrar");
-        button_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+        botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_cadastrarActionPerformed(evt);
+                botaoCadastrarActionPerformed(evt);
             }
         });
 
-        conteudo.setColumns(20);
-        conteudo.setRows(5);
-        jScrollPane2.setViewportView(conteudo);
+        campoConteudo.setColumns(20);
+        campoConteudo.setLineWrap(true);
+        campoConteudo.setRows(5);
+        jScrollPane2.setViewportView(campoConteudo);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Tipo de Mensagem:");
+
+        campoTipoMensagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um campo", "Individual", "Projeto" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,27 +99,28 @@ public class CadastrarMensagem extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(button_cancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button_cadastrar)
+                .addComponent(botaoCadastrar)
                 .addGap(8, 8, 8))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_nomeCliente)
-                            .addComponent(label_meioEnvio))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(meioEnvioTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                            .addComponent(nomeClienteTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_conteudo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(label_cadastroMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(78, 78, 78)
+                        .addComponent(label_cadastroMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_nomeCliente)
+                            .addComponent(jLabel1)
+                            .addComponent(label_meioEnvio)
+                            .addComponent(label_conteudo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTipoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,80 +128,81 @@ public class CadastrarMensagem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(label_cadastroMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(campoTipoMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_nomeCliente)
-                    .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_meioEnvio)
-                    .addComponent(meioEnvioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(campoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(label_meioEnvio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_conteudo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_cancelar)
-                    .addComponent(button_cadastrar))
+                    .addComponent(botaoCadastrar))
                 .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
          
-    private void button_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_cadastrarActionPerformed
-        // TODO add your handling code here:
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+
+        String comboBox = (campoTipoMensagem.getSelectedItem() + "").toLowerCase();
         
-        if ((nomeClienteTextField.getText().isEmpty())) {
-            label_nomeCliente.setForeground(Color.red);
+        if(campoDestinatario.getText().isEmpty() || campoConteudo.getText().isEmpty() || comboBox.equals("selecione um campo")){
+            JOptionPane.showMessageDialog(null, "Faltou um campo para preencher");  
+            return;
         }
         
-        if ((meioEnvioTextField.getText().isEmpty())) {
-            label_meioEnvio.setForeground(Color.red);
-        }
-        
-        if ((conteudo.getText().isEmpty())) {
-            label_conteudo.setForeground(Color.red);
-         
-        }
-        if  (!((nomeClienteTextField.getText().isEmpty()) || (meioEnvioTextField.getText().isEmpty()) || (conteudo.getText().isEmpty()))){
+        Mensagem mensagem = new Mensagem(Main.getManager().getUsuarioLogado().getId(), "sistema", campoConteudo.getText(), System.currentTimeMillis());
+        if(comboBox.equals("individual")){
+            if(!Main.getManager().existeUsuario(campoDestinatario.getText())){
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado");  
+                return;
+            }
+            Usuario destinatario = Main.getManager().getUsuarioByUserName(campoDestinatario.getText());
             
-                    
-//               Main.getManager().cadastrarMensagem(new Mensagem(jTextField1.getText(), jTextField4.getText(), jTextField2.getText(), jTextArea2.getText(), System.currentTimeMillis() ));
-               JOptionPane.showMessageDialog(null, "Mensagem cadastrada com sucesso!");
-               dispose(); 
-            
+            Main.getManager().getmIndiDAO().addMensagemToDatabase(new MensagemIndividual(mensagem, destinatario.getId()));
         }else{
-                JOptionPane.showMessageDialog(null, "Faltou um campo para preencher.");
+            if(!Main.getManager().existeProjeto(campoDestinatario.getText())){
+                JOptionPane.showMessageDialog(null, "Projeto não encontrado");  
+                return; 
+            }
+            Projeto destinatario = Main.getManager().getProjetoByName(campoDestinatario.getText());
+            
+            Main.getManager().getmColeDAO().addMensagemToDatabase(new MensagemColetiva(mensagem, destinatario.getId()));
         }
         
-        {
-   
-    }
+        JOptionPane.showMessageDialog(null, "Mensagem cadastrada com sucesso!");
+        dispose(); 
+  
                 
-    }//GEN-LAST:event_button_cadastrarActionPerformed
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
-    private void nomeClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeClienteTextFieldActionPerformed
-
-    private void meioEnvioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meioEnvioTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_meioEnvioTextFieldActionPerformed
+    private void campoDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDestinatarioActionPerformed
+        
+    }//GEN-LAST:event_campoDestinatarioActionPerformed
 
     private void button_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_cancelarActionPerformed
-        // TODO add your handling code here:
-        
         dispose();
     }//GEN-LAST:event_button_cancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_cadastrar;
+    private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton button_cancelar;
-    private javax.swing.JTextArea conteudo;
+    private javax.swing.JTextArea campoConteudo;
+    private javax.swing.JTextField campoDestinatario;
+    private javax.swing.JComboBox<String> campoTipoMensagem;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -218,7 +212,5 @@ public class CadastrarMensagem extends javax.swing.JFrame {
     private javax.swing.JLabel label_conteudo;
     private javax.swing.JLabel label_meioEnvio;
     private javax.swing.JLabel label_nomeCliente;
-    private javax.swing.JTextField meioEnvioTextField;
-    private javax.swing.JTextField nomeClienteTextField;
     // End of variables declaration//GEN-END:variables
 }

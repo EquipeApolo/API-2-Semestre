@@ -5,11 +5,17 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import projeto.GUI.mensagem.CadastrarMensagem;
+import projeto.GUI.projetos.CadastrarProjetoSuporte;
+import projeto.GUI.projetos.ProjetosCadastradosSuporte;
+import projeto.GUI.usuario.TelaCadastrarUsuario;
+import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
+import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
+import projeto.model.tipos.FuncaoUsuario;
 
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuPrincipalSuporte extends javax.swing.JFrame {
 
-    public MenuPrincipal() {
+    public MenuPrincipalSuporte() {
         initComponents();
         setTitle("Pro4Tech");
         setLocationRelativeTo(null);
@@ -26,29 +32,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jButton1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        label_pro4Tech = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuMensagens = new javax.swing.JMenu();
         botaoAdicionarMensagem = new javax.swing.JMenuItem();
         botaoConsultarMensagens = new javax.swing.JMenuItem();
+        menuGerenciar = new javax.swing.JMenu();
+        botaoAdicionarProjeto = new javax.swing.JMenuItem();
+        botaoConsultarProjetos = new javax.swing.JMenuItem();
+        botaoCadastrarUsuario = new javax.swing.JMenuItem();
+        botaoConsultarUsuarios = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
-
-        jMenuItem3.setText("jMenuItem3");
-
-        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        label_pro4Tech.setBackground(new java.awt.Color(255, 255, 255));
-        label_pro4Tech.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/pro4tech.png"))); // NOI18N
 
-        jDesktopPane1.setLayer(label_pro4Tech, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -56,14 +61,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_pro4Tech, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addComponent(label_pro4Tech)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         menuBar.setBackground(new java.awt.Color(204, 204, 204));
@@ -96,6 +101,52 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuBar.add(menuMensagens);
 
+        menuGerenciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Engrenagem.png"))); // NOI18N
+        menuGerenciar.setText("Gerenciar");
+        menuGerenciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGerenciarActionPerformed(evt);
+            }
+        });
+
+        botaoAdicionarProjeto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        botaoAdicionarProjeto.setText("Adicionar Projeto");
+        botaoAdicionarProjeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAdicionarProjetoActionPerformed(evt);
+            }
+        });
+        menuGerenciar.add(botaoAdicionarProjeto);
+
+        botaoConsultarProjetos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        botaoConsultarProjetos.setText("Projetos Cadastrados");
+        botaoConsultarProjetos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConsultarProjetosActionPerformed(evt);
+            }
+        });
+        menuGerenciar.add(botaoConsultarProjetos);
+
+        botaoCadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/+.png"))); // NOI18N
+        botaoCadastrarUsuario.setText("Cadastrar Usuários");
+        botaoCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarUsuarioActionPerformed(evt);
+            }
+        });
+        menuGerenciar.add(botaoCadastrarUsuario);
+
+        botaoConsultarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/Lupa.png"))); // NOI18N
+        botaoConsultarUsuarios.setText("Usuários Cadastrados");
+        botaoConsultarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConsultarUsuariosActionPerformed(evt);
+            }
+        });
+        menuGerenciar.add(botaoConsultarUsuarios);
+
+        menuBar.add(menuGerenciar);
+
         menuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
         menuSobre.setText("Sobre");
         menuSobre.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +173,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAdicionarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarMensagemActionPerformed
-        new CadastrarMensagem().setVisible(true);   
+        new CadastrarMensagem().setVisible(true); 
     }//GEN-LAST:event_botaoAdicionarMensagemActionPerformed
 
     private void menuMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMensagensActionPerformed
@@ -130,7 +181,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuMensagensActionPerformed
 
     private void botaoConsultarMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarMensagensActionPerformed
-
         new ConsultarMensagem().setVisible(true);
     }//GEN-LAST:event_botaoConsultarMensagensActionPerformed
 
@@ -138,15 +188,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuSobreActionPerformed
 
+    private void menuGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciarActionPerformed
+
+    }//GEN-LAST:event_menuGerenciarActionPerformed
+
+    private void botaoAdicionarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarProjetoActionPerformed
+        new CadastrarProjetoSuporte().setVisible(true);
+    }//GEN-LAST:event_botaoAdicionarProjetoActionPerformed
+
+    private void botaoConsultarProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarProjetosActionPerformed
+        new ProjetosCadastradosSuporte().setVisible(true);
+    }//GEN-LAST:event_botaoConsultarProjetosActionPerformed
+
+    private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarUsuarioActionPerformed
+        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == FuncaoUsuario.SUPORTE.getId()) new TelaCadastrarUsuario().setVisible(true);
+        else new TelaCadastrarUsuarioAdmin().setVisible(true);
+    }//GEN-LAST:event_botaoCadastrarUsuarioActionPerformed
+
+    private void botaoConsultarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarUsuariosActionPerformed
+        new TelaUsuariosCadastrados().setVisible(true);
+    }//GEN-LAST:event_botaoConsultarUsuariosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem botaoAdicionarMensagem;
+    private javax.swing.JMenuItem botaoAdicionarProjeto;
+    private javax.swing.JMenuItem botaoCadastrarUsuario;
     private javax.swing.JMenuItem botaoConsultarMensagens;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem botaoConsultarProjetos;
+    private javax.swing.JMenuItem botaoConsultarUsuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JLabel label_pro4Tech;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuGerenciar;
     private javax.swing.JMenu menuMensagens;
     private javax.swing.JMenu menuSobre;
     // End of variables declaration//GEN-END:variables

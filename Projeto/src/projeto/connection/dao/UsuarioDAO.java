@@ -1,4 +1,3 @@
-
 package projeto.connection.dao;
 
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ public class UsuarioDAO {
     
     
     public void createTable(){
-        String sql = "CREATE TABLE IF NOT EXISTS usuarios(id int AUTO_INCREMENT, nome varchar(30) not null, username varchar(30), senha varchar(30) not null, funcaousuario int, PRIMARY KEY (id)) DEFAULT CHARSET=utf8;";
+        String sql = "CREATE TABLE IF NOT EXISTS usuarios(id int AUTO_INCREMENT, nome varchar(30) not null, username varchar(30), email varchar(100), senha varchar(30) not null, funcaousuario int, PRIMARY KEY (id)) DEFAULT CHARSET=utf8;";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.execute();
@@ -25,13 +24,14 @@ public class UsuarioDAO {
     }
     
     public void addUsuarioToDatabase(Usuario usuario){
-        String sql = "INSERT INTO usuarios(nome,username,senha,funcaousuario) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO usuarios(nome,username,email,senha,funcaousuario) VALUES (?,?,?,?,?);";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getUserName());
-            statement.setString(3, usuario.getSenha());
-            statement.setInt(4, usuario.getFuncaoUsuario());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setInt(5, usuario.getFuncaoUsuario());
             statement.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -85,6 +85,7 @@ public class UsuarioDAO {
                         resultSet.getString("nome"),
                         resultSet.getString("username"),
                         resultSet.getString("senha"),
+                        resultSet.getString("email"),
                         resultSet.getInt("funcaousuario")
                 );
                 
@@ -113,6 +114,7 @@ public class UsuarioDAO {
                         resultSet.getString("nome"),
                         resultSet.getString("username"),
                         resultSet.getString("senha"),
+                        resultSet.getString("email"),
                         resultSet.getInt("funcaousuario")
                 );
                 usuarios.add(usuario);
@@ -140,6 +142,7 @@ public class UsuarioDAO {
                         resultSet.getString("username"),
                         resultSet.getString("nome"),
                         resultSet.getString("senha"),
+                        resultSet.getString("email"),
                         resultSet.getInt("funcaousuario")
                 );
                 usuarios.add(usuario);

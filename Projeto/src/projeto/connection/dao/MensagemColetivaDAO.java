@@ -1,4 +1,3 @@
-
 package projeto.connection.dao;
 
 import java.sql.PreparedStatement;
@@ -9,11 +8,9 @@ import java.util.List;
 import projeto.Main;
 import projeto.model.MensagemColetiva;
 
-
 public class MensagemColetivaDAO {
     
-    // DESTINATARIO DESSA MENSAGEM É O PROJETO!!!!
-    
+    // Destinatário da Mensagem Coletiva é o ID do Projeto.
     
         public void createTable(){
         String sql = "CREATE TABLE IF NOT EXISTS mensagem_coletiva(id int AUTO_INCREMENT, idremetente int, idprojeto int, meio varchar(20) not null, conteudo text not null, data_horario bigint not null, PRIMARY KEY (id), foreign key(idremetente) references usuarios(id), foreign key(idprojeto) references projetos(id) ) DEFAULT CHARSET=utf8;"; 

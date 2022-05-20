@@ -1,41 +1,33 @@
-
 package projeto.connection.dao;
 
-
 import java.text.ParseException;
-
-
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import projeto.Main;
 import projeto.model.Projeto;
 import projeto.model.Usuario;
 
 public class Manager {
 
-
     private Usuario usuarioLogado;
 
-
-    private final UsuarioDAO uDao;
-    private final MensagemIndividualDAO mIndiDAO;
-    private final ProjetoDAO proDAO;
-    private final MensagemColetivaDAO mColeDAO;
+    private final UsuarioDAO usuarioDAO;
+    private final MensagemIndividualDAO mensagemIndividualDAO;
+    private final ProjetoDAO projetoDAO;
+    private final MensagemColetivaDAO mensagemColetivaDAO;
 
     public Manager(){
-        this.uDao = new UsuarioDAO();
-        this.mIndiDAO = new MensagemIndividualDAO();
-        this.proDAO = new ProjetoDAO();
-        this.mColeDAO = new MensagemColetivaDAO();
+        this.usuarioDAO = new UsuarioDAO();
+        this.mensagemIndividualDAO = new MensagemIndividualDAO();
+        this.projetoDAO = new ProjetoDAO();
+        this.mensagemColetivaDAO = new MensagemColetivaDAO();
     }
 
     public void criarTabelas(){
-        //this.dao.createTable();
-        this.uDao.createTable();
-        this.mIndiDAO.createTable();
-        this.proDAO.createTable();
-        this.mColeDAO.createTable();
+        this.usuarioDAO.createTable();
+        this.projetoDAO.createTable();
+        this.mensagemColetivaDAO.createTable();
+        this.mensagemIndividualDAO.createTable();
     }
 
     public Usuario getUsuarioLogado() {
@@ -47,59 +39,59 @@ public class Manager {
     }
 
     public ProjetoDAO getProjetoDAO() {
-        return proDAO;
+        return projetoDAO;
     }
 
     public MensagemColetivaDAO getmColeDAO() {
-        return mColeDAO;
+        return mensagemColetivaDAO;
     }
 
     public MensagemIndividualDAO getmIndiDAO() {
-        return mIndiDAO;
+        return mensagemIndividualDAO;
     }
 
     public UsuarioDAO getUsuarioDao() {
-        return uDao;
+        return usuarioDAO;
     }
     
     public void criarProjeto(Projeto projeto){
-        this.proDAO.addProjetoToDatabase(projeto);
+        this.projetoDAO.addProjetoToDatabase(projeto);
     }
     
     public void criarUsuario(Usuario usuario){
-        this.uDao.addUsuarioToDatabase(usuario);
+        this.usuarioDAO.addUsuarioToDatabase(usuario);
     }
     
     public boolean existeUsuario(String userName){
-        return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getUserName().equalsIgnoreCase(userName));
+        return this.usuarioDAO.getTodosUsuarios().stream().anyMatch(r-> r.getUserName().equalsIgnoreCase(userName));
     }
 
     public boolean existeUsuarioNome(String name){
-        return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getNome().equalsIgnoreCase(name));
+        return this.usuarioDAO.getTodosUsuarios().stream().anyMatch(r-> r.getNome().equalsIgnoreCase(name));
     }
 
     public boolean existeUsuario(int id){
-        return this.uDao.getTodosUsuarios().stream().anyMatch(r-> r.getId() == id);
+        return this.usuarioDAO.getTodosUsuarios().stream().anyMatch(r-> r.getId() == id);
     }
 
     public Usuario getUsuarioByUserName(String userName){
         if(!existeUsuario(userName)) return null;
         return 
-            this.uDao.getTodosUsuarios().stream().filter(r-> r.getUserName().equalsIgnoreCase(userName)).findFirst().get();
+            this.usuarioDAO.getTodosUsuarios().stream().filter(r-> r.getUserName().equalsIgnoreCase(userName)).findFirst().get();
     }
 
     public Usuario getUsuarioByID(int id){
-        return this.uDao.getTodosUsuarios().stream().filter(r-> r.getId() == id).findFirst().get();
+        return this.usuarioDAO.getTodosUsuarios().stream().filter(r-> r.getId() == id).findFirst().get();
     }
 
     public boolean existeProjeto(String projeto){
-        return this.proDAO.getTodosProjetos().stream().anyMatch(r->r.getNome().equalsIgnoreCase(projeto));
+        return this.projetoDAO.getTodosProjetos().stream().anyMatch(r->r.getNome().equalsIgnoreCase(projeto));
     }
 
     public Projeto getProjetoByName(String projeto){
         if(!existeProjeto(projeto)) return null;
         return 
-            this.proDAO.getTodosProjetos().stream().filter(r->r.getNome().equalsIgnoreCase(projeto)).findFirst().get();
+            this.projetoDAO.getTodosProjetos().stream().filter(r->r.getNome().equalsIgnoreCase(projeto)).findFirst().get();
     }
 
     public String transformarData(long data){

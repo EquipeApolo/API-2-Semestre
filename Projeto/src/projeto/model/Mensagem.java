@@ -1,6 +1,4 @@
-
 package projeto.model;
-
 
 public class Mensagem {
 
@@ -44,8 +42,6 @@ public class Mensagem {
     public void setIdDestinatario(int idDestinatario) {
         this.idDestinatario = idDestinatario;
     }
-    
-    
 
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;

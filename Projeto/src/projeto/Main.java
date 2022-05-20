@@ -1,13 +1,10 @@
-
 package projeto;
 
 import projeto.connection.dao.Manager;
 import projeto.connection.ConnectionFactory;
-
-import java.sql.SQLException;
-
 import projeto.GUI.menu.TelaLogin;
 
+import java.sql.SQLException;
 
 public class Main {
 
@@ -15,7 +12,6 @@ public class Main {
     private static Manager manager;
 
     public static void main(String[] args){
-
 
         manager = new Manager();
 
@@ -30,9 +26,8 @@ public class Main {
         }
 
         manager.criarTabelas();
-        
-        new TelaLogin().setVisible(true);
 
+        new TelaLogin().setVisible(true);
 
     }
 
