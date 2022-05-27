@@ -44,10 +44,13 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         label_cadastro.setText("Cadastro de Usuário");
         label_cadastro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        label_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_nome.setText("Nome:");
 
+        label_nomeUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_nomeUsuario.setText("Login:");
 
+        label_senha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_senha.setText("Senha:");
 
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +66,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         emailLabel.setText("Email:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -81,14 +85,15 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
                                     .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(label_nomeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoNome)
-                                    .addComponent(campoEmail)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                                        .addComponent(campoEmail))
                                     .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(label_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 4, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -126,7 +131,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );

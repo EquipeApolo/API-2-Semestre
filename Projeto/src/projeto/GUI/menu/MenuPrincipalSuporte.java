@@ -7,10 +7,14 @@ import javax.swing.JFrame;
 import projeto.GUI.mensagem.CadastrarMensagem;
 import projeto.GUI.projetos.CadastrarProjetoSuporte;
 import projeto.GUI.projetos.ProjetosCadastradosSuporte;
+import projeto.GUI.usuario.ExibirPerfil;
+import projeto.GUI.usuario.ExibirUsuarioTabela;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
 import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
 import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
+import projeto.connection.dao.UsuarioDAO;
+import projeto.model.Usuario;
 import projeto.model.tipos.FuncaoUsuario;
 
 public class MenuPrincipalSuporte extends javax.swing.JFrame {
@@ -43,7 +47,8 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
         botaoConsultarProjetos = new javax.swing.JMenuItem();
         botaoCadastrarUsuario = new javax.swing.JMenuItem();
         botaoConsultarUsuarios = new javax.swing.JMenuItem();
-        menuSobre = new javax.swing.JMenu();
+        menuPerfil = new javax.swing.JMenu();
+        menuSobre1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -68,7 +73,7 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel1)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         menuBar.setBackground(new java.awt.Color(204, 204, 204));
@@ -147,14 +152,30 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
 
         menuBar.add(menuGerenciar);
 
-        menuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
-        menuSobre.setText("Sobre");
-        menuSobre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSobreActionPerformed(evt);
+        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/User.png"))); // NOI18N
+        menuPerfil.setText("Perfil");
+        menuPerfil.setToolTipText("");
+        menuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuPerfilMouseClicked(evt);
             }
         });
-        menuBar.add(menuSobre);
+        menuPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPerfilActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuPerfil);
+
+        menuSobre1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
+        menuSobre1.setText("Sobre");
+        menuSobre1.setIconTextGap(2);
+        menuSobre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSobre1ActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuSobre1);
 
         setJMenuBar(menuBar);
 
@@ -184,9 +205,9 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
         new ConsultarMensagem().setVisible(true);
     }//GEN-LAST:event_botaoConsultarMensagensActionPerformed
 
-    private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
-
-    }//GEN-LAST:event_menuSobreActionPerformed
+    private void menuPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPerfilActionPerformed
+        //new ExibirPerfil().setVisible(true);   
+    }//GEN-LAST:event_menuPerfilActionPerformed
 
     private void menuGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciarActionPerformed
 
@@ -209,6 +230,14 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
         new TelaUsuariosCadastrados().setVisible(true);
     }//GEN-LAST:event_botaoConsultarUsuariosActionPerformed
 
+    private void menuSobre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSobre1ActionPerformed
+
+    private void menuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPerfilMouseClicked
+        //new ExibirPerfil().setVisible(true);
+    }//GEN-LAST:event_menuPerfilMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem botaoAdicionarMensagem;
@@ -222,6 +251,7 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuGerenciar;
     private javax.swing.JMenu menuMensagens;
-    private javax.swing.JMenu menuSobre;
+    private javax.swing.JMenu menuPerfil;
+    private javax.swing.JMenu menuSobre1;
     // End of variables declaration//GEN-END:variables
 }

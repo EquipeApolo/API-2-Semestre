@@ -58,8 +58,16 @@ public class Manager {
         this.projetoDAO.addProjetoToDatabase(projeto);
     }
     
+    public void editarProjeto(Projeto projeto){
+        this.projetoDAO.editar(projeto);
+    }
+    
     public void criarUsuario(Usuario usuario){
         this.usuarioDAO.addUsuarioToDatabase(usuario);
+    }
+    
+    public void editarUsuario(Usuario usuario){
+        this.usuarioDAO.editar(usuario);
     }
     
     public boolean existeUsuario(String userName){

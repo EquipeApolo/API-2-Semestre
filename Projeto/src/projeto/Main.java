@@ -5,6 +5,7 @@ import projeto.connection.ConnectionFactory;
 import projeto.GUI.menu.TelaLogin;
 
 import java.sql.SQLException;
+import projeto.GUI.menu.MenuPrincipalSuporte;
 
 public class Main {
 

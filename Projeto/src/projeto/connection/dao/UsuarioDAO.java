@@ -38,8 +38,25 @@ public class UsuarioDAO {
         }
     }
     
+    public void editar(Usuario usuario){
+        String sql = "UPDATE usuarios SET nome=?, username=?, email=?, senha=? WHERE funcaousuario=?;";
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getUserName());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setInt(5, usuario.getFuncaoUsuario());
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
     public void deleteUsuario(int idusuario){
         String sql = "DELETE FROM usuarios WHERE id = ?;";
+        //Main.getManager().getmIndiDAO().deleteMensagemFromDatabase(idusuario);
+        Main.getManager().getmColeDAO().deleteMensagemPorUsuarioFromDatabase(idusuario);
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.setInt(1, idusuario);

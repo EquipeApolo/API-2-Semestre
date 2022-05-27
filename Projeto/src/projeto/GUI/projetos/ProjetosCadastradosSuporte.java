@@ -164,13 +164,10 @@ public class ProjetosCadastradosSuporte extends javax.swing.JFrame {
         String nome = (String)table_projetoCadastrado.getValueAt(linhaSelecionada, 0);
         Projeto projeto = Main.getManager().getProjetoByName(nome);
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                ExibirProjetosTabela exibitExibirLinhasTabela = new ExibirProjetosTabela(projeto);
-                exibitExibirLinhasTabela.setVisible(true);
-            }
-        });     
+        
+        ExibirProjetosTabela exibitExibirLinhasTabela = new ExibirProjetosTabela(this, projeto);
+        exibitExibirLinhasTabela.setVisible(true);
+               
     }//GEN-LAST:event_table_projetoCadastradoMouseClicked
 
     private void campoConsultaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaKeyReleased

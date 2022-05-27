@@ -11,6 +11,8 @@ import projeto.model.tipos.FuncaoUsuario;
 
 public class TelaUsuariosCadastrados extends javax.swing.JFrame {
 
+    private FuncaoUsuario funcaoUsuario;
+
     public TelaUsuariosCadastrados() {
         initComponents();
         
@@ -71,6 +73,11 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tableUsuarioCadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableUsuarioCadastradoMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableUsuarioCadastrado);
@@ -169,6 +176,17 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_campoConsultaKeyReleased
+
+    private void tableUsuarioCadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsuarioCadastradoMouseClicked
+        // TODO add your handling code here:
+        int linhaSelecionada =  tableUsuarioCadastrado.getSelectedRow();
+        String userName = (String)tableUsuarioCadastrado.getValueAt(linhaSelecionada, 1);
+        Usuario usuario = Main.getManager().getUsuarioByUserName(userName);
+
+        
+        ExibirUsuarioTabela exibitExibirUsuarioTabela = new ExibirUsuarioTabela(this, usuario, funcaoUsuario);
+        exibitExibirUsuarioTabela.setVisible(true);
+    }//GEN-LAST:event_tableUsuarioCadastradoMouseClicked
 
     public void readTable(){
 

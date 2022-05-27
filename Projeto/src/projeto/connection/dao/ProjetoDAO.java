@@ -32,8 +32,22 @@ public class ProjetoDAO {
         }
     }
     
+    public void editar(Projeto projeto){
+        String sql = "UPDATE projetos SET nome=?, descricao=? WHERE idcliente=?";
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setString(1, projeto.getNome());
+            statement.setString(2, projeto.getDescricao());
+            statement.setInt(3, projeto.getIdCliente());
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
     public void deleteProjeto(int idprojeto){
         String sql = "DELETE FROM projetos WHERE id = ?;";
+        Main.getManager().getmColeDAO().deleteMensagemPorProjetoFromDatabase(idprojeto);
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.setInt(1, idprojeto);

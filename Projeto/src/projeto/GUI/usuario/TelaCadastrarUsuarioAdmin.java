@@ -64,6 +64,11 @@ public class TelaCadastrarUsuarioAdmin extends javax.swing.JFrame {
         });
 
         campoTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um perfil", "Cliente", "Administrador", "Suporte" }));
+        campoTipoPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTipoPerfilActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Email:");
 
@@ -191,6 +196,10 @@ public class TelaCadastrarUsuarioAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
         dispose();
     }//GEN-LAST:event_botaoCadastrarActionPerformed
+
+    private void campoTipoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTipoPerfilActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

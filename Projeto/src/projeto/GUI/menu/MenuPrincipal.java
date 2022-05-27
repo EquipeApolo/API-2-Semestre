@@ -34,6 +34,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuMensagens = new javax.swing.JMenu();
         botaoAdicionarMensagem = new javax.swing.JMenuItem();
         botaoConsultarMensagens = new javax.swing.JMenuItem();
+        menuPerfil = new javax.swing.JMenu();
         menuSobre = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
@@ -63,7 +64,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(label_pro4Tech)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         menuBar.setBackground(new java.awt.Color(204, 204, 204));
@@ -95,6 +96,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuMensagens.add(botaoConsultarMensagens);
 
         menuBar.add(menuMensagens);
+
+        menuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/User.png"))); // NOI18N
+        menuPerfil.setText("Perfil");
+        menuPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPerfilActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuPerfil);
 
         menuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
         menuSobre.setText("Sobre");
@@ -138,6 +148,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuSobreActionPerformed
 
+    private void menuPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPerfilActionPerformed
+        //new ().setVisible(true);
+    }//GEN-LAST:event_menuPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem botaoAdicionarMensagem;
@@ -148,6 +162,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel label_pro4Tech;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuMensagens;
+    private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuSobre;
     // End of variables declaration//GEN-END:variables
 }

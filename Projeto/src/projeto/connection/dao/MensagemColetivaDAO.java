@@ -50,6 +50,30 @@ public class MensagemColetivaDAO {
         }
     }
     
+    public void deleteMensagemPorProjetoFromDatabase(int idprojeto){
+        String sql = "DELETE FROM mensagem_coletiva WHERE idprojeto = ?;";
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setInt(1, idprojeto);
+
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteMensagemPorUsuarioFromDatabase(int iddestinatario){
+        String sql = "DELETE FROM mensagem_coletiva WHERE idprojeto = ?;";
+        try{
+            PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
+            statement.setInt(1, iddestinatario);
+
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
     public List<MensagemColetiva> getTodasMensagens(){
         List<MensagemColetiva> listaMensagens = new ArrayList<>();
         String sql = "SELECT * FROM mensagem_coletiva;";
