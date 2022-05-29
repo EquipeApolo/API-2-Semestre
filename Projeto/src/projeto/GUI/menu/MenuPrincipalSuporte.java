@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import projeto.GUI.mensagem.CadastrarMensagem;
 import projeto.GUI.projetos.CadastrarProjeto;
 import projeto.GUI.projetos.ProjetosCadastrados;
+import projeto.GUI.usuario.EditarProprioPerfil;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
 import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
 import projeto.GUI.usuario.TelaUsuariosCadastrados;
@@ -44,6 +45,8 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
         botaoCadastrarUsuario = new javax.swing.JMenuItem();
         botaoConsultarUsuarios = new javax.swing.JMenuItem();
         menuPerfil = new javax.swing.JMenu();
+        botaoEditarPerfil = new javax.swing.JMenuItem();
+        botaoGerarRelatorio = new javax.swing.JMenuItem();
         menuSobre1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,6 +164,18 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
                 menuPerfilActionPerformed(evt);
             }
         });
+
+        botaoEditarPerfil.setText("Editar perfil");
+        botaoEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarPerfilActionPerformed(evt);
+            }
+        });
+        menuPerfil.add(botaoEditarPerfil);
+
+        botaoGerarRelatorio.setText("Gerar relatório");
+        menuPerfil.add(botaoGerarRelatorio);
+
         menuBar.add(menuPerfil);
 
         menuSobre1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
@@ -234,6 +249,10 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
         //new ExibirPerfil().setVisible(true);
     }//GEN-LAST:event_menuPerfilMouseClicked
 
+    private void botaoEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarPerfilActionPerformed
+        new EditarProprioPerfil().setVisible(true);
+    }//GEN-LAST:event_botaoEditarPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem botaoAdicionarMensagem;
@@ -242,6 +261,8 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
     private javax.swing.JMenuItem botaoConsultarMensagens;
     private javax.swing.JMenuItem botaoConsultarProjetos;
     private javax.swing.JMenuItem botaoConsultarUsuarios;
+    private javax.swing.JMenuItem botaoEditarPerfil;
+    private javax.swing.JMenuItem botaoGerarRelatorio;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;

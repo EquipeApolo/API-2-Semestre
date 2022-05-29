@@ -5,6 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import projeto.GUI.mensagem.CadastrarMensagem;
+import projeto.GUI.usuario.EditarProprioPerfil;
 import projeto.Main;
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -35,6 +36,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botaoAdicionarMensagem = new javax.swing.JMenuItem();
         botaoConsultarMensagens = new javax.swing.JMenuItem();
         menuPerfil = new javax.swing.JMenu();
+        botaoEditarPerfil = new javax.swing.JMenuItem();
+        botaoGerarRelatorio = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
@@ -71,6 +74,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuMensagens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/email_attach.png"))); // NOI18N
         menuMensagens.setText("Mensagens");
+        menuMensagens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuMensagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuMensagensActionPerformed(evt);
@@ -104,6 +108,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 menuPerfilActionPerformed(evt);
             }
         });
+
+        botaoEditarPerfil.setText("Editar perfil");
+        botaoEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarPerfilActionPerformed(evt);
+            }
+        });
+        menuPerfil.add(botaoEditarPerfil);
+
+        botaoGerarRelatorio.setText("Gerar relatório");
+        botaoGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoGerarRelatorioActionPerformed(evt);
+            }
+        });
+        menuPerfil.add(botaoGerarRelatorio);
+
         menuBar.add(menuPerfil);
 
         menuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/Imagens/exclamation.png"))); // NOI18N
@@ -152,10 +173,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //new ().setVisible(true);
     }//GEN-LAST:event_menuPerfilActionPerformed
 
+    private void botaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGerarRelatorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoGerarRelatorioActionPerformed
+
+    private void botaoEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarPerfilActionPerformed
+        new EditarProprioPerfil().setVisible(true);
+    }//GEN-LAST:event_botaoEditarPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem botaoAdicionarMensagem;
     private javax.swing.JMenuItem botaoConsultarMensagens;
+    private javax.swing.JMenuItem botaoEditarPerfil;
+    private javax.swing.JMenuItem botaoGerarRelatorio;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem3;

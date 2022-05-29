@@ -1,5 +1,6 @@
 package projeto.GUI.usuario;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projeto.Main;
 import projeto.model.Usuario;
@@ -23,6 +24,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         
         setTitle("Pro4Tech - Usuário");
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -69,6 +71,7 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         label_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_login.setText("Login:");
+        label_login.setPreferredSize(new java.awt.Dimension(40, 20));
 
         campoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +88,7 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         label_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_email.setText("Email:");
+        label_email.setPreferredSize(new java.awt.Dimension(40, 20));
 
         campoEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,8 +125,8 @@ public class EditarUsuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_nome)
-                                    .addComponent(label_login)
-                                    .addComponent(label_email))
+                                    .addComponent(label_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(campoLogin)
@@ -145,11 +149,11 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_login))
+                    .addComponent(label_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_email))
+                    .addComponent(label_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_tipoPerfil)

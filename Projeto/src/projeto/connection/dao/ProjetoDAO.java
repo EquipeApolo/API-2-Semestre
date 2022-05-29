@@ -33,12 +33,12 @@ public class ProjetoDAO {
     }
     
     public void editar(Projeto projeto){
-        String sql = "UPDATE projetos SET nome=?, descricao=? WHERE idcliente=?";
+        String sql = "UPDATE projetos SET nome=?, descricao=? WHERE id=?";
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
             statement.setString(1, projeto.getNome());
             statement.setString(2, projeto.getDescricao());
-            statement.setInt(3, projeto.getIdCliente());
+            statement.setInt(3, projeto.getId());
             statement.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
