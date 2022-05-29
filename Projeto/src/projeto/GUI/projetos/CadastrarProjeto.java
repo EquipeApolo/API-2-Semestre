@@ -6,9 +6,9 @@ import projeto.Main;
 import projeto.model.Usuario;
 import projeto.model.tipos.FuncaoUsuario;
 
-public class CadastrarProjetoSuporte extends javax.swing.JFrame {
+public class CadastrarProjeto extends javax.swing.JFrame {
 
-    public CadastrarProjetoSuporte() {
+    public CadastrarProjeto() {
         initComponents();
 
         setTitle("Pro4Tech - Cadastro de projeto");

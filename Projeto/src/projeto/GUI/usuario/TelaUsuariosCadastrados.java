@@ -184,7 +184,7 @@ public class TelaUsuariosCadastrados extends javax.swing.JFrame {
         Usuario usuario = Main.getManager().getUsuarioByUserName(userName);
 
         
-        ExibirUsuarioTabela exibitExibirUsuarioTabela = new ExibirUsuarioTabela(this, usuario, funcaoUsuario);
+        EditarUsuario exibitExibirUsuarioTabela = new EditarUsuario(this, usuario, funcaoUsuario);
         exibitExibirUsuarioTabela.setVisible(true);
     }//GEN-LAST:event_tableUsuarioCadastradoMouseClicked
 

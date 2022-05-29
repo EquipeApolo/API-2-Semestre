@@ -1,37 +1,26 @@
 package projeto.GUI.usuario;
 
-import projeto.GUI.projetos.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 import projeto.Main;
-import projeto.connection.dao.ProjetoDAO;
-import projeto.connection.dao.UsuarioDAO;
-import projeto.model.Projeto;
 import projeto.model.Usuario;
 import projeto.model.tipos.FuncaoUsuario;
 
-public class ExibirPerfil extends javax.swing.JFrame {
+public class EditarUsuario extends javax.swing.JFrame {
     
     private Usuario usuario;
+    private FuncaoUsuario funcaoUsuario;
     private TelaUsuariosCadastrados paginaUsuario;
-
     
-    public ExibirPerfil(Usuario usuario, TelaUsuariosCadastrados paginaUsuario) {
+    public EditarUsuario(TelaUsuariosCadastrados paginaUsuario, Usuario usuario, FuncaoUsuario funcaoUsuario) {
         initComponents();
         
         this.usuario = usuario;
         this.paginaUsuario = paginaUsuario;
+        this.funcaoUsuario = funcaoUsuario;
         campoLogin.setText(usuario.getUserName());
         campoNome.setText(usuario.getNome());
         campoEmail.setText(usuario.getEmail());
-        campoSenha.setText(usuario.getSenha());
-//        Usuario cliente = Main.getManager().getUsuarioByID(usuario.UserName());
-//        campoNome.setText(cliente.getNome());  
-//        
+        
         setTitle("Pro4Tech - Usuário");
         setLocationRelativeTo(null);
     }
@@ -46,10 +35,11 @@ public class ExibirPerfil extends javax.swing.JFrame {
         campoNome = new javax.swing.JTextField();
         label_login = new javax.swing.JLabel();
         campoLogin = new javax.swing.JTextField();
+        Button_excluir = new javax.swing.JButton();
         label_email = new javax.swing.JLabel();
         campoEmail = new javax.swing.JTextField();
-        label_senha = new javax.swing.JLabel();
-        campoSenha = new javax.swing.JPasswordField();
+        label_tipoPerfil = new javax.swing.JLabel();
+        campoTipoPerfil = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -71,7 +61,6 @@ public class ExibirPerfil extends javax.swing.JFrame {
         label_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_nome.setText("Nome:");
 
-        campoNome.setEditable(false);
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNomeActionPerformed(evt);
@@ -81,10 +70,16 @@ public class ExibirPerfil extends javax.swing.JFrame {
         label_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_login.setText("Login:");
 
-        campoLogin.setEditable(false);
         campoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoLoginActionPerformed(evt);
+            }
+        });
+
+        Button_excluir.setText("Excluir");
+        Button_excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_excluirActionPerformed(evt);
             }
         });
 
@@ -97,12 +92,14 @@ public class ExibirPerfil extends javax.swing.JFrame {
             }
         });
 
-        label_senha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_senha.setText("Senha");
+        label_tipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_tipoPerfil.setText("Tipo de perfil:");
 
-        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+        campoTipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um perfil", "Cliente", "Administrador", "Suporte" }));
+        campoTipoPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
+                campoTipoPerfilActionPerformed(evt);
             }
         });
 
@@ -114,21 +111,27 @@ public class ExibirPerfil extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Button_excluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Button_atualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                         .addComponent(botaoVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_nome)
-                            .addComponent(label_login)
-                            .addComponent(label_email)
-                            .addComponent(label_senha))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campoLogin)
-                            .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                            .addComponent(campoEmail)
-                            .addComponent(campoSenha))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_nome)
+                                    .addComponent(label_login)
+                                    .addComponent(label_email))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(campoLogin)
+                                    .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                                    .addComponent(campoEmail)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label_tipoPerfil)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -149,12 +152,13 @@ public class ExibirPerfil extends javax.swing.JFrame {
                     .addComponent(label_email))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_senha)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                    .addComponent(label_tipoPerfil)
+                    .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoVoltar)
-                    .addComponent(Button_atualizar))
+                    .addComponent(Button_atualizar)
+                    .addComponent(Button_excluir))
                 .addGap(30, 30, 30))
         );
 
@@ -166,34 +170,39 @@ public class ExibirPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void Button_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_atualizarActionPerformed
+
+        String comboBox = (campoTipoPerfil.getSelectedItem() + "").toLowerCase();
        
-        if(campoNome.getText().isEmpty() || campoLogin.getText().isEmpty() || campoEmail.getText().isEmpty() || 
-                campoSenha.getText().isEmpty()){
+        if(campoNome.getText().isEmpty() || campoLogin.getText().isEmpty() ||
+                comboBox.equals("selecione um perfil") || campoEmail.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
             return;
         }
-//        
-//        if(Main.getManager().existeUsuario(campoLogin.getText())){
-//            JOptionPane.showMessageDialog(null, "Login já cadastrado", "Atenção!", 2);
-//            return;
-//        }
+        
+        if((!campoLogin.getText().equalsIgnoreCase(usuario.getUserName())) && Main.getManager().existeUsuario(campoLogin.getText())){
+            JOptionPane.showMessageDialog(null, "Login já cadastrado", "Atenção!", 2);
+            return;
+        }
 
-//        if(Main.getManager().existeUsuarioNome(campoNome.getText())){
-//            JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado", "Atenção!", 2);
-//            return;
-//        }
+        if((!campoNome.getText().equalsIgnoreCase(usuario.getNome())) && Main.getManager().existeUsuarioNome(campoNome.getText())){
+            JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado", "Atenção!", 2);
+            return;
+        }
         
         if(!campoEmail.getText().contains("@")){
             JOptionPane.showMessageDialog(null, "Formato de email incorreto", "Atenção!", 2);
             return;
         }
+
+        FuncaoUsuario funcaoUsuario = FuncaoUsuario.getFuncaoByName(comboBox);
         
         usuario.setEmail(campoEmail.getText());
         usuario.setNome(campoNome.getText());
         usuario.setUserName(campoLogin.getText());
+        usuario.setFuncaoUsuario(funcaoUsuario.getId());
 
         Main.getManager().editarUsuario(usuario);
-        JOptionPane.showMessageDialog(null, "Perfil atualizado com sucesso");
+        JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso");
         dispose();
         paginaUsuario.readTable();
     }//GEN-LAST:event_Button_atualizarActionPerformed
@@ -206,25 +215,35 @@ public class ExibirPerfil extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campoLoginActionPerformed
 
+    private void Button_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_excluirActionPerformed
+        // TODO add your handling code here:
+        Main.getManager().getUsuarioDao().deleteUsuario(usuario.getId());
+        JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso");   
+        dispose();
+        paginaUsuario.readTable();
+    }//GEN-LAST:event_Button_excluirActionPerformed
+
     private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEmailActionPerformed
 
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-
-    }//GEN-LAST:event_campoSenhaActionPerformed
+    private void campoTipoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoPerfilActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_campoTipoPerfilActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_atualizar;
+    private javax.swing.JButton Button_excluir;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JComboBox<String> campoTipoPerfil;
     private javax.swing.JLabel label_email;
     private javax.swing.JLabel label_login;
     private javax.swing.JLabel label_nome;
-    private javax.swing.JLabel label_senha;
+    private javax.swing.JLabel label_tipoPerfil;
     // End of variables declaration//GEN-END:variables
 }

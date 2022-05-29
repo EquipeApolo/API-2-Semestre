@@ -5,16 +5,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import projeto.GUI.mensagem.CadastrarMensagem;
-import projeto.GUI.projetos.CadastrarProjetoSuporte;
-import projeto.GUI.projetos.ProjetosCadastradosSuporte;
-import projeto.GUI.usuario.ExibirPerfil;
-import projeto.GUI.usuario.ExibirUsuarioTabela;
+import projeto.GUI.projetos.CadastrarProjeto;
+import projeto.GUI.projetos.ProjetosCadastrados;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
 import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
 import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
-import projeto.connection.dao.UsuarioDAO;
-import projeto.model.Usuario;
 import projeto.model.tipos.FuncaoUsuario;
 
 public class MenuPrincipalSuporte extends javax.swing.JFrame {
@@ -214,11 +210,11 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
     }//GEN-LAST:event_menuGerenciarActionPerformed
 
     private void botaoAdicionarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarProjetoActionPerformed
-        new CadastrarProjetoSuporte().setVisible(true);
+        new CadastrarProjeto().setVisible(true);
     }//GEN-LAST:event_botaoAdicionarProjetoActionPerformed
 
     private void botaoConsultarProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarProjetosActionPerformed
-        new ProjetosCadastradosSuporte().setVisible(true);
+        new ProjetosCadastrados().setVisible(true);
     }//GEN-LAST:event_botaoConsultarProjetosActionPerformed
 
     private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarUsuarioActionPerformed

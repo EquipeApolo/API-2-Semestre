@@ -1,32 +1,22 @@
 package projeto.GUI.projetos;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projeto.Main;
-import projeto.connection.dao.ProjetoDAO;
 import projeto.model.Projeto;
-import projeto.model.Usuario;
-import projeto.model.tipos.FuncaoUsuario;
 
-public class ExibirProjetosTabela extends javax.swing.JFrame {
+public class EditarProjeto extends javax.swing.JFrame {
     
     private Projeto projeto;
-    private ProjetosCadastradosSuporte paginaSuporte;
+    private ProjetosCadastrados paginaSuporte;
     
-    public ExibirProjetosTabela(ProjetosCadastradosSuporte paginaSuporte, Projeto projeto) {
+    public EditarProjeto(ProjetosCadastrados paginaSuporte, Projeto projeto) {
         initComponents();
         
         this.projeto = projeto;
         this.paginaSuporte = paginaSuporte;
         campoProjeto.setText(projeto.getNome());
-        
-        Usuario cliente = Main.getManager().getUsuarioByID(projeto.getIdCliente());
-        campoCliente.setText(cliente.getNome());
         campoConteudo.setText(projeto.getDescricao());
 
-        
         setTitle("Pro4Tech - Editando projeto");
         setLocationRelativeTo(null);
     }
@@ -41,8 +31,6 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         campoConteudo = new javax.swing.JTextArea();
         Button_atualizar = new javax.swing.JButton();
-        label_nomeCliente1 = new javax.swing.JLabel();
-        campoCliente = new javax.swing.JTextField();
         label_nomeProjeto = new javax.swing.JLabel();
         campoProjeto = new javax.swing.JTextField();
         Button_excluir = new javax.swing.JButton();
@@ -72,15 +60,6 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
         Button_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_atualizarActionPerformed(evt);
-            }
-        });
-
-        label_nomeCliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_nomeCliente1.setText("Nome do Cliente:");
-
-        campoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoClienteActionPerformed(evt);
             }
         });
 
@@ -120,32 +99,25 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_conteudo)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(label_nomeProjeto)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(campoProjeto))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(label_nomeCliente1)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label_conteudo)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label_nomeProjeto)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoProjeto)))
+                        .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label_mensagemRegistrada, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_nomeCliente1)
-                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_nomeProjeto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(label_nomeProjeto)
+                    .addComponent(campoProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(label_conteudo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,38 +139,24 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
     private void Button_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_atualizarActionPerformed
         // TODO add your handling code here:
         
-        ProjetoDAO projetoDAO = new ProjetoDAO();
-        projetoDAO.editar(projeto);
-        if(campoCliente.getText().isEmpty() || campoProjeto.getText().isEmpty() || campoConteudo.getText().isEmpty()){
+        if(campoProjeto.getText().isEmpty() || campoConteudo.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
             return;
         }
 
-        if(!Main.getManager().existeUsuario(campoCliente.getText())){
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
+        if((!campoProjeto.getText().equalsIgnoreCase(projeto.getNome())) && Main.getManager().existeProjeto(campoProjeto.getText())){
+            JOptionPane.showMessageDialog(null, "O projeto informado já existe", "Atenção!", 2);
             return;
         }
-
-//        if(Main.getManager().existeProjeto(campoProjeto.getText())){
-//            JOptionPane.showMessageDialog(null, "O projeto informado já existe", "Atenção!", 2);
-//            return;
-//        }
-
-        Usuario cliente = Main.getManager().getUsuarioByUserName(campoCliente.getText());
-        if(cliente.getFuncaoUsuario() != FuncaoUsuario.CLIENTE.getId()){
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado", "Atenção!", 2);
-            return;
-        }
-        
-        Main.getManager().editarProjeto(new projeto.model.Projeto(campoProjeto.getText(), campoConteudo.getText(), cliente.getId()));
+  
+        projeto.setNome(campoProjeto.getText());
+        projeto.setDescricao(campoConteudo.getText());
+      
+        Main.getManager().editarProjeto(projeto);
         JOptionPane.showMessageDialog(null, "Projeto atualizado com sucesso");   
         dispose();
         paginaSuporte.readTable();
     }//GEN-LAST:event_Button_atualizarActionPerformed
-
-    private void campoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoClienteActionPerformed
-
-    }//GEN-LAST:event_campoClienteActionPerformed
 
     private void campoProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoProjetoActionPerformed
 
@@ -206,8 +164,7 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
 
     private void Button_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_excluirActionPerformed
         // TODO add your handling code here:
-        ProjetoDAO projetoDAO = new ProjetoDAO();
-        projetoDAO.deleteProjeto(projeto.getId());
+        Main.getManager().getProjetoDAO().deleteProjeto(projeto.getId());
         JOptionPane.showMessageDialog(null, "Projeto excluído com sucesso");   
         dispose();
         paginaSuporte.readTable();
@@ -218,13 +175,11 @@ public class ExibirProjetosTabela extends javax.swing.JFrame {
     private javax.swing.JButton Button_atualizar;
     private javax.swing.JButton Button_excluir;
     private javax.swing.JButton botaoVoltar;
-    private javax.swing.JTextField campoCliente;
     private javax.swing.JTextArea campoConteudo;
     private javax.swing.JTextField campoProjeto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_conteudo;
     private javax.swing.JLabel label_mensagemRegistrada;
-    private javax.swing.JLabel label_nomeCliente1;
     private javax.swing.JLabel label_nomeProjeto;
     // End of variables declaration//GEN-END:variables
 }

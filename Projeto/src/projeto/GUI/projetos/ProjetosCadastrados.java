@@ -12,9 +12,9 @@ import projeto.Main;
 import projeto.model.Projeto;
 import projeto.model.Usuario;
 
-public class ProjetosCadastradosSuporte extends javax.swing.JFrame {
+public class ProjetosCadastrados extends javax.swing.JFrame {
 
-    public ProjetosCadastradosSuporte() {
+    public ProjetosCadastrados() {
         initComponents();
         DefaultTableModel tabelaMensagens =  (DefaultTableModel) table_projetoCadastrado.getModel();
         table_projetoCadastrado.setRowSorter(new TableRowSorter(tabelaMensagens));
@@ -165,7 +165,7 @@ public class ProjetosCadastradosSuporte extends javax.swing.JFrame {
         Projeto projeto = Main.getManager().getProjetoByName(nome);
 
         
-        ExibirProjetosTabela exibitExibirLinhasTabela = new ExibirProjetosTabela(this, projeto);
+        EditarProjeto exibitExibirLinhasTabela = new EditarProjeto(this, projeto);
         exibitExibirLinhasTabela.setVisible(true);
                
     }//GEN-LAST:event_table_projetoCadastradoMouseClicked
