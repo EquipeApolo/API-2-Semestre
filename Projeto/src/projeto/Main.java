@@ -5,7 +5,6 @@ import projeto.connection.ConnectionFactory;
 import projeto.GUI.menu.TelaLogin;
 
 import java.sql.SQLException;
-import projeto.GUI.menu.MenuPrincipalSuporte;
 
 public class Main {
 
@@ -14,14 +13,12 @@ public class Main {
 
     public static void main(String[] args){
 
-        manager = new Manager();
-
         try{
 
-            connectionFactory = new ConnectionFactory();
+            connectionFactory = ConnectionFactory.getInstance();
+            manager = Manager.getInstance();
 
         }catch(SQLException e){
-            e.printStackTrace();
             System.exit(0);
             return;
         }

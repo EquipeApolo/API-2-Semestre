@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/GUI/usuario/TelaCadastrarUsuario.java</file>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/connection/dao/UsuarioDAO.java</file>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/GUI/usuario/EditarProprioPerfil.java</file>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/Main.java</file>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/GUI/menu/MenuPrincipal.java</file>
+            <file>file:/D:/matérias/2%20semestre/API/API-2-Semestre/Projeto/src/projeto/GUI/menu/MenuPrincipalSuporte.java</file>
+        </group>
     </open-files>
 </project-private>

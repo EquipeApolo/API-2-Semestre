@@ -20,6 +20,23 @@ public class MensagemIndividualDAO {
         }
         
     }
+
+    public void deleteMensagensPorUsuario(int idUsuario){
+        List<MensagemIndividual> lista = new ArrayList<>();
+
+        if(!getMensagensPorDestinatario(idUsuario).isEmpty()) lista.addAll(getMensagensPorDestinatario(idUsuario));
+        if(!getMensagensPorRemetente(idUsuario).isEmpty()){
+            getMensagensPorRemetente(idUsuario).forEach(r->{
+                        if(!lista.contains(r)){
+                            lista.add(r);
+                        }
+            });
+        }
+
+        if(!lista.isEmpty()){
+            lista.forEach(r-> deleteMensagemFromDatabase(r.getId()));
+        }
+    }
     
     public void addMensagemToDatabase(MensagemIndividual mensagem){
         String sql = "INSERT INTO mensagem_individual(idremetente,iddestinatario,meio,conteudo,data_horario) VALUES (?,?,?,?,?);";

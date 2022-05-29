@@ -15,8 +15,15 @@ public class Manager {
     private final MensagemIndividualDAO mensagemIndividualDAO;
     private final ProjetoDAO projetoDAO;
     private final MensagemColetivaDAO mensagemColetivaDAO;
+    
+    private static Manager instance = null;
 
-    public Manager(){
+    public static Manager getInstance(){
+        if(instance == null) instance = new Manager();
+        return instance;
+    }
+
+    private Manager(){
         this.usuarioDAO = new UsuarioDAO();
         this.mensagemIndividualDAO = new MensagemIndividualDAO();
         this.projetoDAO = new ProjetoDAO();
