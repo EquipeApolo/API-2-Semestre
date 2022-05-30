@@ -25,6 +25,11 @@ public class EditarUsuario extends javax.swing.JFrame {
         setTitle("Pro4Tech - Usuário");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        
+        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() != 2){
+            labelTipoPerfil.setVisible(false);
+            campoTipoPerfil.setVisible(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -32,15 +37,15 @@ public class EditarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         botaoVoltar = new javax.swing.JButton();
+        campoNome = new javax.swing.JTextField();
         Button_atualizar = new javax.swing.JButton();
         label_nome = new javax.swing.JLabel();
-        campoNome = new javax.swing.JTextField();
         label_login = new javax.swing.JLabel();
         campoLogin = new javax.swing.JTextField();
         Button_excluir = new javax.swing.JButton();
         label_email = new javax.swing.JLabel();
         campoEmail = new javax.swing.JTextField();
-        label_tipoPerfil = new javax.swing.JLabel();
+        labelTipoPerfil = new javax.swing.JLabel();
         campoTipoPerfil = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +58,12 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
+        campoNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNomeActionPerformed(evt);
+            }
+        });
+
         Button_atualizar.setText("Atualizar");
         Button_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,12 +73,6 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         label_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_nome.setText("Nome:");
-
-        campoNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeActionPerformed(evt);
-            }
-        });
 
         label_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label_login.setText("Login:");
@@ -96,8 +101,8 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        label_tipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label_tipoPerfil.setText("Tipo de perfil:");
+        labelTipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTipoPerfil.setText("Tipo de perfil:");
 
         campoTipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um perfil", "Cliente", "Administrador", "Suporte" }));
@@ -133,7 +138,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                                     .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                                     .addComponent(campoEmail)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_tipoPerfil)
+                                .addComponent(labelTipoPerfil)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -156,7 +161,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                     .addComponent(label_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_tipoPerfil)
+                    .addComponent(labelTipoPerfil)
                     .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -198,12 +203,12 @@ public class EditarUsuario extends javax.swing.JFrame {
             return;
         }
 
-        FuncaoUsuario funcaoUsuario = FuncaoUsuario.getFuncaoByName(comboBox);
+        FuncaoUsuario funcao = FuncaoUsuario.getFuncaoByName(comboBox);
         
         usuario.setEmail(campoEmail.getText());
         usuario.setNome(campoNome.getText());
         usuario.setUserName(campoLogin.getText());
-        usuario.setFuncaoUsuario(funcaoUsuario.getId());
+        usuario.setFuncaoUsuario(funcao.getId());
 
         Main.getManager().editarUsuario(usuario);
         JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso");
@@ -245,9 +250,9 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoLogin;
     private javax.swing.JTextField campoNome;
     private javax.swing.JComboBox<String> campoTipoPerfil;
+    private javax.swing.JLabel labelTipoPerfil;
     private javax.swing.JLabel label_email;
     private javax.swing.JLabel label_login;
     private javax.swing.JLabel label_nome;
-    private javax.swing.JLabel label_tipoPerfil;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,8 +49,8 @@
                                   <Component id="campoEmail" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label_tipoPerfil" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="labelTipoPerfil" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="campoTipoPerfil" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -82,7 +82,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="label_tipoPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelTipoPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="campoTipoPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="67" max="32767" attributes="0"/>
@@ -105,6 +105,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVoltarActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JTextField" name="campoNome">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="Button_atualizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
@@ -120,11 +125,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nome:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="campoNome">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label_login">
       <Properties>
@@ -166,7 +166,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoEmailActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="label_tipoPerfil">
+    <Component class="javax.swing.JLabel" name="labelTipoPerfil">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>

@@ -4,7 +4,7 @@ public enum FuncaoUsuario {
     
     CLIENTE(0),
     SUPORTE(1),
-    ADMIN(2);
+    ADMINISTRADOR(2);
     
     private final int id;
     

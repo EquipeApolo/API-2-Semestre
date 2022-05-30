@@ -9,7 +9,6 @@ import projeto.GUI.projetos.CadastrarProjeto;
 import projeto.GUI.projetos.ProjetosCadastrados;
 import projeto.GUI.usuario.EditarProprioPerfil;
 import projeto.GUI.usuario.TelaCadastrarUsuario;
-import projeto.GUI.usuario.TelaCadastrarUsuarioAdmin;
 import projeto.GUI.usuario.TelaUsuariosCadastrados;
 import projeto.Main;
 import projeto.model.tipos.FuncaoUsuario;
@@ -233,8 +232,8 @@ public class MenuPrincipalSuporte extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoConsultarProjetosActionPerformed
 
     private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarUsuarioActionPerformed
-        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == FuncaoUsuario.SUPORTE.getId()) new TelaCadastrarUsuario().setVisible(true);
-        else new TelaCadastrarUsuarioAdmin().setVisible(true);
+
+        new TelaCadastrarUsuario().setVisible(true);
     }//GEN-LAST:event_botaoCadastrarUsuarioActionPerformed
 
     private void botaoConsultarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarUsuariosActionPerformed
