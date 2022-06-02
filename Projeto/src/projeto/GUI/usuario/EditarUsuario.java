@@ -36,6 +36,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         botaoVoltar = new javax.swing.JButton();
         campoNome = new javax.swing.JTextField();
         Button_atualizar = new javax.swing.JButton();
@@ -51,6 +52,9 @@ public class EditarUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(242, 189, 121));
+
+        botaoVoltar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,12 +62,14 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
+        campoNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNomeActionPerformed(evt);
             }
         });
 
+        Button_atualizar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Button_atualizar.setText("Atualizar");
         Button_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,19 +77,21 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        label_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         label_nome.setText("Nome:");
 
-        label_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_login.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         label_login.setText("Login:");
         label_login.setPreferredSize(new java.awt.Dimension(40, 20));
 
+        campoLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoLoginActionPerformed(evt);
             }
         });
 
+        Button_excluir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Button_excluir.setText("Excluir");
         Button_excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,20 +99,21 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        label_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_email.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         label_email.setText("Email:");
         label_email.setPreferredSize(new java.awt.Dimension(40, 20));
 
+        campoEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoEmailActionPerformed(evt);
             }
         });
 
-        labelTipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTipoPerfil.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelTipoPerfil.setText("Tipo de perfil:");
 
-        campoTipoPerfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoTipoPerfil.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um perfil", "Cliente", "Administrador", "Suporte" }));
         campoTipoPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,63 +121,74 @@ public class EditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Button_excluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Button_atualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
-                        .addComponent(botaoVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoVoltar)
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_nome)
                                     .addComponent(label_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(campoLogin)
-                                    .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                                    .addComponent(campoEmail)))
-                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(campoNome)
+                                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelTipoPerfil)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap())))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_nome)
                     .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTipoPerfil)
                     .addComponent(campoTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_atualizar)
-                    .addComponent(Button_excluir))
-                .addGap(30, 30, 30))
+                    .addComponent(Button_excluir)
+                    .addComponent(botaoVoltar))
+                .addGap(12, 12, 12))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -183,11 +203,15 @@ public class EditarUsuario extends javax.swing.JFrame {
         String comboBox = (campoTipoPerfil.getSelectedItem() + "").toLowerCase();
        
         if(campoNome.getText().isEmpty() || campoLogin.getText().isEmpty() ||
-                comboBox.equals("selecione um perfil") || campoEmail.getText().isEmpty()){
+                campoEmail.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
             return;
         }
         
+        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == 2 && comboBox.equals("selecione um perfil")){
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
+            return;  
+        }
         if((!campoLogin.getText().equalsIgnoreCase(usuario.getUserName())) && Main.getManager().existeUsuario(campoLogin.getText())){
             JOptionPane.showMessageDialog(null, "Login já cadastrado", "Atenção!", 2);
             return;
@@ -203,12 +227,14 @@ public class EditarUsuario extends javax.swing.JFrame {
             return;
         }
 
-        FuncaoUsuario funcao = FuncaoUsuario.getFuncaoByName(comboBox);
+        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == 2){
+            FuncaoUsuario funcao = FuncaoUsuario.getFuncaoByName(comboBox);  
+            usuario.setFuncaoUsuario(funcao.getId());
+        }
         
         usuario.setEmail(campoEmail.getText());
         usuario.setNome(campoNome.getText());
         usuario.setUserName(campoLogin.getText());
-        usuario.setFuncaoUsuario(funcao.getId());
 
         Main.getManager().editarUsuario(usuario);
         JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso");
@@ -250,6 +276,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoLogin;
     private javax.swing.JTextField campoNome;
     private javax.swing.JComboBox<String> campoTipoPerfil;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelTipoPerfil;
     private javax.swing.JLabel label_email;
     private javax.swing.JLabel label_login;
