@@ -37,6 +37,8 @@ public class Manager {
         this.mensagemIndividualDAO.createTable();
     }
 
+//  DEFINIÇÃO DO USUÁRIO LOGADO NO SISTEMA
+
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
@@ -45,9 +47,7 @@ public class Manager {
         this.usuarioLogado = usuarioLogado;
     }
 
-    public ProjetoDAO getProjetoDAO() {
-        return projetoDAO;
-    }
+//  GETTERS DOS MENSAGEMDAO
 
     public MensagemColetivaDAO getmColeDAO() {
         return mensagemColetivaDAO;
@@ -57,16 +57,10 @@ public class Manager {
         return mensagemIndividualDAO;
     }
 
+//  MÉTODOS PARA USUÁRIO
+
     public UsuarioDAO getUsuarioDao() {
         return usuarioDAO;
-    }
-    
-    public void criarProjeto(Projeto projeto){
-        this.projetoDAO.addProjetoToDatabase(projeto);
-    }
-    
-    public void editarProjeto(Projeto projeto){
-        this.projetoDAO.editar(projeto);
     }
     
     public void criarUsuario(Usuario usuario){
@@ -99,6 +93,22 @@ public class Manager {
         return this.usuarioDAO.getTodosUsuarios().stream().filter(r-> r.getId() == id).findFirst().get();
     }
 
+
+//  MÉTODOS PARA PROJETO
+
+    public ProjetoDAO getProjetoDAO() {
+        return projetoDAO;
+    }
+
+    public void criarProjeto(Projeto projeto){
+        this.projetoDAO.addProjetoToDatabase(projeto);
+    }
+    
+    public void editarProjeto(Projeto projeto){
+        this.projetoDAO.editar(projeto);
+    }
+
+
     public boolean existeProjeto(String projeto){
         return this.projetoDAO.getTodosProjetos().stream().anyMatch(r->r.getNome().equalsIgnoreCase(projeto));
     }
@@ -108,6 +118,8 @@ public class Manager {
         return 
             this.projetoDAO.getTodosProjetos().stream().filter(r->r.getNome().equalsIgnoreCase(projeto)).findFirst().get();
     }
+
+//  MÉTODOS PARA FORMATAÇÃO DE DATAS
 
     public String transformarData(long data){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm");

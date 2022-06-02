@@ -90,6 +90,8 @@ public class MensagemColetivaDAO {
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+
+                mensagem.setId(resultSet.getInt("int"));
                 
                 listaMensagens.add(mensagem);
             }
@@ -117,6 +119,8 @@ public class MensagemColetivaDAO {
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+
+                mensagem.setId(resultSet.getInt("int"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){
@@ -143,6 +147,8 @@ public class MensagemColetivaDAO {
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+
+                mensagem.setId(resultSet.getInt("int"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){

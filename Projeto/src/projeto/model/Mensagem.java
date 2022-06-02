@@ -15,6 +15,13 @@ public class Mensagem {
         this.data = horario;
     }
 
+    public Mensagem(int id, int dest, String meioContato, String mensagem, long horario){
+        this.idDestinatario = dest;
+        this.meio = meioContato;
+        this.conteudo = mensagem;
+        this.data = horario;
+    }
+
     public int getId() {
         return id;
     }

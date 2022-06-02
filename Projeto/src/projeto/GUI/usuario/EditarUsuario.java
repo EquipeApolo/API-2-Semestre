@@ -208,10 +208,6 @@ public class EditarUsuario extends javax.swing.JFrame {
             return;
         }
         
-        if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == 2 && comboBox.equals("selecione um perfil")){
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos obrigatórios", "Atenção!", 2);
-            return;  
-        }
         if((!campoLogin.getText().equalsIgnoreCase(usuario.getUserName())) && Main.getManager().existeUsuario(campoLogin.getText())){
             JOptionPane.showMessageDialog(null, "Login já cadastrado", "Atenção!", 2);
             return;
@@ -228,8 +224,10 @@ public class EditarUsuario extends javax.swing.JFrame {
         }
 
         if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == 2){
-            FuncaoUsuario funcao = FuncaoUsuario.getFuncaoByName(comboBox);  
-            usuario.setFuncaoUsuario(funcao.getId());
+            if(!comboBox.equals("selecione um perfil")){
+                FuncaoUsuario funcao = FuncaoUsuario.getFuncaoByName(comboBox);  
+                usuario.setFuncaoUsuario(funcao.getId());
+            }
         }
         
         usuario.setEmail(campoEmail.getText());

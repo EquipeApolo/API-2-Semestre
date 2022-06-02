@@ -14,6 +14,11 @@ public class MensagemColetiva extends Mensagem{
         this.idRemetente = remetente;
     }
 
+    public MensagemColetiva(int id, int remetente, int destinatario, String meio, String conteudo, long data){
+        super(id, destinatario, meio, conteudo, data);
+        this.idRemetente = remetente;
+    }
+
     public int getIdRemetente() {
         return idRemetente;
     }

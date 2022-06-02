@@ -8,6 +8,11 @@ public class MensagemIndividual extends Mensagem{
         super(mensagem.getIdDestinatario(), mensagem.getMeio(), mensagem.getConteudo(), mensagem.getData());
         this.idRemetente = idRemetente;
     }
+
+    public MensagemIndividual(int id, int remetente, int destinatario, String meio, String conteudo, long data){
+        super(id, destinatario, meio, conteudo, data);
+        this.idRemetente = remetente;
+    }
     
     public MensagemIndividual(int remetente, int destinatario, String meio, String conteudo, long data){
         super(destinatario, meio, conteudo, data);

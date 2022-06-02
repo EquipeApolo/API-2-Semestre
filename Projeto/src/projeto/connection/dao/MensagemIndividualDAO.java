@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import projeto.Main;
 import projeto.model.MensagemIndividual;
@@ -24,17 +25,27 @@ public class MensagemIndividualDAO {
     public void deleteMensagensPorUsuario(int idUsuario){
         List<MensagemIndividual> lista = new ArrayList<>();
 
-        if(!getMensagensPorDestinatario(idUsuario).isEmpty()) lista.addAll(getMensagensPorDestinatario(idUsuario));
-        if(!getMensagensPorRemetente(idUsuario).isEmpty()){
-            getMensagensPorRemetente(idUsuario).forEach(r->{
-                        if(!lista.contains(r)){
-                            lista.add(r);
-                        }
-            });
+//        if(!getMensagensPorDestinatario(idUsuario).isEmpty()) lista.addAll(getMensagensPorDestinatario(idUsuario));
+//        if(!getMensagensPorRemetente(idUsuario).isEmpty()){
+//            getMensagensPorRemetente(idUsuario).forEach(r->{
+//                        if(!lista.contains(r)){
+//                            lista.add(r);
+//                        }
+//            });
+//        }
+
+        for(MensagemIndividual mensagens : getTodasMensagens()){
+            if(mensagens.getIdDestinatario() == idUsuario){ 
+                lista.add(mensagens);
+            }
+            if(mensagens.getIdRemetente() == idUsuario){ 
+                lista.add(mensagens);
+            }
         }
 
         if(!lista.isEmpty()){
-            lista.forEach(r-> deleteMensagemFromDatabase(r.getId()));
+            lista.forEach(r-> {deleteMensagemFromDatabase(r.getId()); System.out.println("Mensagem DENTRO " + r.getId());});
+
         }
     }
     
@@ -61,6 +72,7 @@ public class MensagemIndividualDAO {
             statement.setInt(1, id_mensagem);
 
             statement.executeUpdate();
+
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -76,12 +88,15 @@ public class MensagemIndividualDAO {
 
             while(resultSet.next()){
                 MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("id"),
                         resultSet.getInt("idremetente"), 
                         resultSet.getInt("iddestinatario"),
                         resultSet.getString("meio"), 
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+
+                mensagem.setId(resultSet.getInt("id"));
                 
                 listaMensagens.add(mensagem);
             }
@@ -109,6 +124,7 @@ public class MensagemIndividualDAO {
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+                mensagem.setId(resultSet.getInt("id"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){
@@ -166,12 +182,14 @@ public class MensagemIndividualDAO {
 
             while(resultSet.next()){
                 MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("id"),
                         resultSet.getInt("idremetente"),
                         resultSet.getInt("iddestinatario"), 
                         resultSet.getString("meio"), 
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+                mensagem.setId(resultSet.getInt("id"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){
@@ -186,12 +204,14 @@ public class MensagemIndividualDAO {
 
             while(resultSet.next()){
                 MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("id"),
                         resultSet.getInt("idremetente"),
                         resultSet.getInt("iddestinatario"), 
                         resultSet.getString("meio"), 
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+                mensagem.setId(resultSet.getInt("id"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){
@@ -212,12 +232,14 @@ public class MensagemIndividualDAO {
 
             while(resultSet.next()){
                 MensagemIndividual mensagem = new MensagemIndividual(
+                        resultSet.getInt("id"),
                         resultSet.getInt("idremetente"),
                         resultSet.getInt("iddestinatario"), 
                         resultSet.getString("meio"), 
                         resultSet.getString("conteudo"), 
                         resultSet.getLong("data_horario")
                 );
+                mensagem.setId(resultSet.getInt("id"));
                 mensagens.add(mensagem);
             }
         }catch(SQLException e){

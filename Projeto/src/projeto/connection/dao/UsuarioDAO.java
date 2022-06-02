@@ -57,10 +57,12 @@ public class UsuarioDAO {
     public void deleteUsuario(int idusuario){
         String sql = "DELETE FROM usuarios WHERE id = ?;";
         Main.getManager().getmIndiDAO().deleteMensagensPorUsuario(idusuario);
+        Main.getManager().getmColeDAO().deleteMensagemPorUsuarioFromDatabase(idusuario);
 
         if(!Main.getManager().getProjetoDAO().getProjetosPorCliente(idusuario).isEmpty()){
             Main.getManager().getProjetoDAO().getProjetosPorCliente(idusuario).forEach(r->{
-                                Main.getManager().getProjetoDAO().deleteProjeto(r.getId()); });
+                                Main.getManager().getProjetoDAO().deleteProjeto(r.getId()); 
+                    });
         }
         try{
             PreparedStatement statement = Main.getConnectionFactory().getConnection().prepareStatement(sql);
