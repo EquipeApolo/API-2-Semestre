@@ -29,6 +29,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         if(Main.getManager().getUsuarioLogado().getFuncaoUsuario() == 0){
             menuGerenciar.setVisible(false);
+            botaoGerarRelatorio.setVisible(false);
         }
     }
 
