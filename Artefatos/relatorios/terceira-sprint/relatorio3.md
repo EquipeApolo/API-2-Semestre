@@ -15,7 +15,7 @@
   
   
  <h3 align="center"> WIREFRAME </h3>
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/MVP_Sprint2.png" height=""/></p>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/MVP_3%C2%B0Sprint.png" height=""/></p>
 
   
 <span id="burndown">
