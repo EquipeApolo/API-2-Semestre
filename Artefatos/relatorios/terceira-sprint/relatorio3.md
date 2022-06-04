@@ -28,7 +28,7 @@
  <span id="entrega">
  
 ## 👩‍💻 Entrega
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Completo%20(gif).gif"></p>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Gif-Sprint3.gif"></p>
 <br>
    
   → [Voltar ao topo](#topo)
