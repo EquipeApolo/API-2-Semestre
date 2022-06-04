@@ -21,7 +21,7 @@
 <span id="burndown">
  
 ## :pushpin: Burndown
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Artefatos/burndown/burndown_2.PNG"></p>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Artefatos/burndown/burndown_3.PNG"></p>
 <br>
 
   
