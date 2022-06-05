@@ -11,7 +11,7 @@
 <span id="mvp">
  
 <h1> :rocket: MVP </h1>
-<p align="justify">Nesta sprint desenvolvemos uma página que tem por finalidade gerar um relatório de quantidade de mensagens enviadas para o usuário escolhido, também é possível gerar um relatório geral que contém o usuário e a quantidade de mensagens enviadas para cada um. A partir dessa Sprint o administrador conseguirá modificar os dados cadastrados, como tipo de usuário, além disso, todas essas informações cadastradas estão seguras na nuvem. </p>
+<p align="justify">Nesta sprint desenvolvemos uma página que tem por finalidade gerar um relatório de quantidade de mensagens enviadas para o usuário escolhido, também é possível gerar um relatório geral que contém o usuário e a quantidade de mensagens enviadas para cada um. A partir dessa Sprint o administrador conseguirá modificar os dados cadastrados, como tipo de usuário, além disso, todas as informações cadastradas estão seguras na nuvem. </p>
   
   
  <h3 align="center"> WIREFRAME </h3>
