@@ -47,7 +47,7 @@ Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando e
 |:-----:|:----------:|:---------:|:---------:|
 | 01 | 14/04/2022 | ✔️ | [ver relatório](Artefatos/relatorios/primeira-sprint/readme.md) |
 | 02 | 15/05/2022 | ✔️ | [ver relatório](Artefatos/relatorios/segunda-sprint/relatorio2.md) |
-| 03 | 05/06/2022 | :white_check_mark: | [ver relatório]() |
+| 03 | 05/06/2022 | ✔️ | [ver relatório](Artefatos/relatorios/terceira-sprint/relatorio3.md) |
  
 <span id="projeto">
     
@@ -56,7 +56,7 @@ Na tabela abaixo é possível visualizar os resultados de cada Sprint clicando e
  
  ## 📌 Backlog Priorizado
     
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Product%20backlog.png"></p>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Product%20backlog_Atualizado.png"></p>
  
  ## 📆 Sprints
 <p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Big%20room%20planning%20(1)%20(1).png"></p>  
