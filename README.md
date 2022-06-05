@@ -23,7 +23,7 @@
 - [x] Administrador ou suporte cadastrar mensagens em nome de um cliente e marcar qual meio ela veio (email, whatsapp e etc);
 - [x] Envio de mensagens individuais para um usuário do sistema;
 - [x] Envio de mensagens coletivas para os grupos do sistema;
-- [ ] Relatório de pessoas ou grupos a quem mais enviei mensagens.
+- [x] Relatório de pessoas ou grupos a quem mais enviei mensagens.
 
 <h3> Requisitos Não Funcionais </h3>
 
@@ -34,8 +34,14 @@
 
  → [Voltar ao topo](#topo)
     
- ## Entregas
-    
+ ## Entregas 
+
+<h4> Entrega da Sprint 1 </h4>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/MVP.gif"></p>
+<h4> Entrega da Sprint 2 </h4>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Completo%20(gif).gif"></p>
+<h4> Entrega da Sprint 3 </h4>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/Gif-Sprint3.gif"></p>
 <br>
     
 <span id="relatório">
