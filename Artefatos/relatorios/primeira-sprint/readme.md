@@ -16,7 +16,7 @@
   
  <h3 align="center"> WIREFRAME </h3>
  <h4> Inicial: </h4>
-<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/IMG-20220414-WA0008.jpg" height=""/></p>
+<p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/wireframe-primeira_sprint.jpg" height=""/></p>
  <h4> Final: </h4>
 <p align="center"> <img src = "https://github.com/Equipe3-API/API-2-Semestre/blob/main/Imagens%20README/wireframe-atualizado.png" height=""/></p>
 <br>

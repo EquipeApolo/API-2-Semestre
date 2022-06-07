@@ -1,6 +1,6 @@
 <br id="topo">
 
-<h1> EQUIPE 3 - APRENDIZAGEM POR PROJETOS INTEGRADOS 2ºSEMESTRE ADS - 2022 </h1>
+<h1> EQUIPE 3 - APRENDIZAGEM POR PROJETOS INTEGRADOS 2º SEMESTRE ADS - 2022 </h1>
 <p align="center">
     <a href="#objetivo">Objetivo</a> | 
     <a href="#requisitos">Requisitos</a> | 
